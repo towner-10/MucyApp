@@ -1,0 +1,6 @@
+package com.mucyhealth.mucy
+
+import io.flutter.embedding.android.FlutterActivity
+
+class MainActivity: FlutterActivity() {
+}

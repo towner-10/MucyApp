@@ -1,0 +1,380 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:mucy/utilities/styles.dart';
+import 'package:stacked/stacked.dart';
+import 'package:stacked_hooks/stacked_hooks.dart';
+import 'onboarding_viewmodel.dart';
+
+class OnboardingView extends StatelessWidget {
+  final PageController _pageController = PageController(initialPage: 0);
+
+  @override
+  Widget build(BuildContext context) {
+    return ViewModelBuilder<OnboardingViewModel>.reactive(
+      builder: (context, model, child) => Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: model.currentBackgroundImage,
+            fit: BoxFit.fitHeight
+          )
+        ),
+        child: Scaffold(
+          backgroundColor: Colors.transparent,
+          body: SingleChildScrollView(
+            child: Container(
+              height: model.getSizingService().screenHeight,
+              child: PageView(
+                physics: NeverScrollableScrollPhysics(),
+                controller: _pageController,
+                onPageChanged: (int page) {
+                  model.updatePage(page);
+                },
+                children: <Widget>[
+                  Container(
+                    height: model.getSizingService().screenHeight,
+                    child: Center(
+                      child: Column(
+                        children: [
+                          Expanded(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.only(top: model.getSizingService().blockSizeVertical * 20),
+                                  child: Container(
+                                    width: model.getSizingService().blockSizeHorizontal * 90,
+                                    padding: EdgeInsets.symmetric(vertical: 20),
+                                    child: Text(
+                                      'Welcome to Mucy',
+                                      style: kHeadingTextStyle.copyWith(
+                                        fontSize: 40,
+                                        color: Colors.white,
+                                      ),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  child: Align(
+                                    alignment: Alignment.center,
+                                    child: Text(
+                                      'I am Mucy the Meerkat.',
+                                      style: GoogleFonts.montserrat(
+                                        fontSize: 20,
+                                        color: const Color(0xffffffff),
+                                      ),
+                                      textAlign: TextAlign.center,
+                                    )
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(vertical: model.getSizingService().blockSizeVertical * 5),
+                            child: InkWell(
+                              onTap: () => _pageController.animateToPage(model.currentPage + 1, duration: Duration(milliseconds: 300), curve: Curves.easeInToLinear),
+                              child: Container(
+                                width: 331.0,
+                                height: model.getSizingService().blockSizeVertical * 7.2,
+                                child: Center(
+                                  child: Text(
+                                    'Continue',
+                                    style: kBottomButtonTextStyle,
+                                  )
+                                ),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20.0),
+                                  color: const Color(0xff282e4e),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      )
+                    )
+                  ),
+                  Container(
+                    height: model.getSizingService().screenHeight,
+                    child: Center(
+                      child: Column(
+                        children: [
+                          Expanded(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Container(
+                                  width: model.getSizingService().blockSizeHorizontal * 70,
+                                  height: model.getSizingService().blockSizeVertical * 50,
+                                  padding: EdgeInsets.symmetric(vertical: 20),
+                                  child: Image(
+                                    fit: BoxFit.fitWidth,
+                                    image: AssetImage("assets/images/blueMucyHead.png"),
+                                  )
+                                ),
+                                Container(
+                                  padding: EdgeInsets.only(left: model.getSizingService().blockSizeHorizontal * 7),
+                                  child: Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Text(
+                                      'Getting to know you',
+                                      style: kHeadingTextStyle,
+                                      textAlign: TextAlign.left,
+                                    )
+                                  ),
+                                ),
+                                Container(
+                                  height: model.getSizingService().blockSizeVertical * 8,
+                                  padding: EdgeInsets.only(left: model.getSizingService().blockSizeHorizontal * 7),
+                                  child: Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Text(
+                                      'Before we get started, what is your name?',
+                                      style: kParagraphTextStyle,
+                                      textAlign: TextAlign.left,
+                                    )
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Container(
+                                    height: model.getSizingService().blockSizeVertical * 25,
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Container(
+                                          padding: EdgeInsets.only(left: model.getSizingService().blockSizeHorizontal * 7),
+                                          child: Align(
+                                            alignment: Alignment.centerLeft,
+                                            child: Text(
+                                              'What\'s your name?',
+                                              style: GoogleFonts.montserrat(
+                                                fontSize: 10,
+                                                color: const Color(0xff000000),
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                              textAlign: TextAlign.left,
+                                            ),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.only(bottom: 10),
+                                          child: Container(
+                                            padding: EdgeInsets.symmetric(horizontal: model.getSizingService().blockSizeHorizontal * 7),
+                                            child: Align(
+                                              alignment: Alignment.topLeft,
+                                              child: Form(
+                                                key: model.formKey,
+                                                child: _HookTextField()
+                                              )
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    )
+                                  )
+                                )
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(vertical: model.getSizingService().blockSizeVertical * 5),
+                            child: InkWell(
+                              onTap: () {
+                                if (model.formKey.currentState.validate()) {
+                                  model.formKey.currentState.save();
+                                  _pageController.animateToPage(model.currentPage + 1, duration: Duration(milliseconds: 300), curve: Curves.easeInToLinear);
+                                }
+                              },
+                              child: Container(
+                                width: 331.0,
+                                height: model.getSizingService().blockSizeVertical * 7.2,
+                                child: Center(
+                                  child: Text(
+                                    'Get started',
+                                    style: kBottomButtonTextStyle
+                                  )
+                                ),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20.0),
+                                  color: const Color(0xff6776c1),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      )
+                    )
+                  ),
+                  Container(
+                    height: model.getSizingService().screenHeight,
+                    child: Center(
+                      child: Column(
+                        children: [
+                          Expanded(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Container(
+                                  width: model.getSizingService().blockSizeHorizontal * 70,
+                                  height: model.getSizingService().blockSizeVertical * 50,
+                                  padding: EdgeInsets.symmetric(vertical: 20),
+                                  child: Image(
+                                    fit: BoxFit.fitWidth,
+                                    image: AssetImage("assets/images/pinkMucyHead.png"),
+                                  )
+                                ),
+                                Container(
+                                  height: model.getSizingService().blockSizeVertical * 5,
+                                  child: Text(
+                                    'Nice to meet you!',
+                                    style: kParagraphTextStyle,
+                                    textAlign: TextAlign.center,
+                                  )
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(bottom: 10),
+                                  child: Container(
+                                    width: model.getSizingService().blockSizeHorizontal * 70,
+                                    height: model.getSizingService().blockSizeVertical * 18,
+                                    child: Stack(
+                                      fit: StackFit.loose,
+                                      alignment: AlignmentDirectional.center,
+                                      children: [
+                                        Container(
+                                          width: model.getSizingService().blockSizeHorizontal * 70,
+                                          height: model.getSizingService().blockSizeVertical * 18,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(27.0),
+                                            border: Border.all(width: 2.0, color: const Color(0xff000000)),
+                                          ),
+                                        ),
+                                        Positioned(
+                                          top: model.getSizingService().blockSizeVertical * 4,
+                                          child: Container(
+                                            width: 233,
+                                            child: Divider(
+                                              thickness: 2,
+                                              color: Colors.black,
+                                            ),
+                                          ),
+                                        ),
+                                        Positioned(
+                                          top: model.getSizingService().blockSizeVertical * 1.5,
+                                          child: Text(
+                                            'Hi, my name is',
+                                            style: GoogleFonts.montserrat(
+                                              fontSize: 18,
+                                              color: const Color(0xff000000),
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                            textAlign: TextAlign.center,
+                                          )
+                                        ),
+                                        Positioned(
+                                          bottom: model.getSizingService().blockSizeVertical * 3,
+                                          child: Container(
+                                            width: model.getSizingService().blockSizeHorizontal * 65,
+                                            child: FittedBox(
+                                              fit: BoxFit.scaleDown,
+                                              child: Text(
+                                                model.currentName,
+                                                style: kHeadingTextStyle.copyWith(
+                                                  fontSize: 50,
+                                                ),
+                                                textAlign: TextAlign.center,
+                                              )
+                                            )
+                                          )
+                                        )
+                                      ]
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(vertical: model.getSizingService().blockSizeVertical * 5),
+                            child: InkWell(
+                              onTap: () => model.navigateToHome(),
+                              child: Container(
+                                width: 331.0,
+                                height: model.getSizingService().blockSizeVertical * 7.2,
+                                child: Center(
+                                  child: Text(
+                                    'Let\'s go',
+                                    style: kBottomButtonTextStyle
+                                  )
+                                ),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20.0),
+                                  color: const Color(0xffcc708a),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      )
+                    )
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+      viewModelBuilder: () => OnboardingViewModel(),
+    );
+  }
+}
+
+class _HookTextField extends HookViewModelWidget<OnboardingViewModel> {
+  @override
+  Widget buildViewModelWidget(BuildContext context, OnboardingViewModel model) {
+    TextEditingController _controller = useTextEditingController();
+
+    return TextFormField(
+      controller: _controller,
+      style: GoogleFonts.montserrat(
+        fontSize: 18,
+        color: Colors.black,
+        fontWeight: FontWeight.w600,
+      ),
+      cursorColor: Colors.black,
+      decoration: InputDecoration(
+        hintText: "Enter your name...",
+        contentPadding: EdgeInsets.only(left: 5),
+        errorStyle: GoogleFonts.montserrat(
+          fontSize: 10,
+          fontWeight: FontWeight.w600,
+        ),
+        hintStyle: GoogleFonts.montserrat(
+          fontWeight: FontWeight.w500,
+          fontSize: 18,
+        ),
+        enabledBorder: UnderlineInputBorder(
+          borderSide: new BorderSide(
+            color: Colors.black,
+            width: 2
+          )
+        ),
+        focusedBorder: UnderlineInputBorder(
+          borderSide: new BorderSide(
+            color: Colors.black,
+            width: 2
+          )
+        ),
+        errorBorder: UnderlineInputBorder(
+          borderSide: new BorderSide(
+            color: Colors.red,
+            width: 2
+          )
+        ),
+      ),
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      validator: model.validateNameInput,
+      onSaved: model.updateName,
+    );
+  }
+}
