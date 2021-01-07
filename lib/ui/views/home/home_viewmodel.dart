@@ -18,8 +18,8 @@ class HomeViewModel extends BaseViewModel {
   }
 
   void navigateToAdultReward() {
-    _navigationService.replaceWith(Routes.breatheView);
-    //_navigationService.replaceWith(Routes.adultView);
+    //_navigationService.replaceWith(Routes.breatheView);
+    _navigationService.replaceWith(Routes.adultView);
   }
 
   SizingService getSizingService() {
