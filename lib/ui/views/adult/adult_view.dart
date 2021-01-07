@@ -13,6 +13,7 @@ class AdultView extends StatelessWidget {
     return ViewModelBuilder<AdultViewModel>.reactive(
       builder: (context, model, child) => Container(
         decoration: BoxDecoration(
+          color: const Color(0xFFDBECDC),
           image: DecorationImage(
             image: Backgrounds.defaultBackground,
             fit: BoxFit.fitHeight

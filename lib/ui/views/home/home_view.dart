@@ -10,6 +10,7 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder<HomeViewModel>.reactive(
       builder: (context, model, child) => Scaffold(
+        backgroundColor: const Color(0xFF7393CC),
         extendBody: true,
         body: Container(
           height: model.getSizingService().screenHeight,

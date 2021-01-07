@@ -98,10 +98,10 @@ class BreatheView extends StatelessWidget {
                         child: CustomAnimation<double>(
                           control: _countControl,
                           tween: Tween(
-                            begin: 3.0,
+                            begin: 5.0,
                             end: 0.0
                           ),
-                          duration: const Duration(seconds: 3, milliseconds: 600),
+                          duration: const Duration(seconds: 6, milliseconds: 400),
                           builder: (context, child, value) {
                             int _displayValue = (value).round();
 

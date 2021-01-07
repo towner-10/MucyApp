@@ -16,7 +16,7 @@ class StartupViewModel extends BaseViewModel {
 
   void navigateToOnboarding() {
     _navigationService.config(
-      defaultTransition: NavigationTransition.Fade
+      defaultTransition: NavigationTransition.RightToLeft
     );
 
     if (_storage.name != '') {
