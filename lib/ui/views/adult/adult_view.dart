@@ -127,6 +127,7 @@ class _HookTextField extends HookViewModelWidget<AdultViewModel> {
 
     return TextFormField(
       controller: _controller,
+      textCapitalization: TextCapitalization.words,
       style: GoogleFonts.montserrat(
         fontSize: 15,
         color: Colors.black,

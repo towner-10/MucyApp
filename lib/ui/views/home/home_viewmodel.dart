@@ -1,6 +1,3 @@
-import 'package:auto_route/auto_route_annotations.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:mucy/app/locator.dart';
 import 'package:mucy/app/router.gr.dart';
 import 'package:mucy/services/sizing_service.dart';
@@ -18,7 +15,6 @@ class HomeViewModel extends BaseViewModel {
   }
 
   void navigateToAdultReward() {
-    //_navigationService.replaceWith(Routes.breatheView);
     _navigationService.replaceWith(Routes.adultView);
   }
 

@@ -4,6 +4,7 @@ import 'package:mucy/ui/elements/translation_animated.dart';
 import 'package:mucy/ui/elements/opacity_animated.dart';
 import 'package:mucy/utilities/backgrounds.dart';
 import 'package:mucy/utilities/styles.dart';
+import 'package:simple_animations/simple_animations.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_hooks/stacked_hooks.dart';
 import 'tapping_viewmodel.dart';
@@ -123,7 +124,7 @@ class _ComposeWidget extends HookViewModelWidget<TappingViewModel> {
 
   @override
   Widget buildViewModelWidget(BuildContext context, TappingViewModel model) {
-    AnimationController _animController = useAnimationController(duration: Duration(seconds: 1));
+    AnimationController _animController = useAnimationController(duration: Duration(seconds: 1, milliseconds: 500));
 
     _animController.reset();
     _animController.forward();
@@ -136,7 +137,7 @@ class _ComposeWidget extends HookViewModelWidget<TappingViewModel> {
     return FadeTransition(
       opacity: _animOpacity,
       child: TranslationAnimatedWidget.tween(
-        translationDisabled: Offset(200, 0),
+        translationDisabled: Offset(400, 0),
         translationEnabled: Offset(0, 0),
         child: child
       )
