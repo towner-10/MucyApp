@@ -197,15 +197,18 @@ class EndingView extends StatelessWidget {
                                 Positioned(
                                   bottom: model.getSizingService().blockSizeVertical * 3,
                                   child: Container(
-                                    width: model.getSizingService().blockSizeHorizontal * 65,
+                                    width: model.getSizingService().blockSizeHorizontal * 60,
                                     child: FittedBox(
                                       fit: BoxFit.scaleDown,
-                                      child: Text(
-                                        model.reward,
-                                        style: kHeadingTextStyle.copyWith(
-                                          fontSize: 50,
-                                        ),
-                                        textAlign: TextAlign.center,
+                                      child: Align(
+                                        alignment: Alignment.center,
+                                        child: Text(
+                                          model.reward == '' ? 'A Mucy Day' : model.reward,
+                                          style: kHeadingTextStyle.copyWith(
+                                            fontSize: 50,
+                                          ),
+                                          textAlign: TextAlign.center,
+                                        )
                                       )
                                     )
                                   )

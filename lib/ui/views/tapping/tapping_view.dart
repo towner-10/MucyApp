@@ -4,7 +4,6 @@ import 'package:mucy/ui/elements/translation_animated.dart';
 import 'package:mucy/ui/elements/opacity_animated.dart';
 import 'package:mucy/utilities/backgrounds.dart';
 import 'package:mucy/utilities/styles.dart';
-import 'package:simple_animations/simple_animations.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_hooks/stacked_hooks.dart';
 import 'tapping_viewmodel.dart';
@@ -32,13 +31,16 @@ class TappingView extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SizedBox(
-                      height: model.getSizingService().blockSizeVertical * 5,
+                      height: model.getSizingService().blockSizeVertical * 7,
                       child: _ComposeWidget(
-                        child: Text(
-                          model.data[model.index].title,
-                          style: kHeadingTextStyle.copyWith(
-                            fontSize: 35
-                          )
+                        child: FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Text(
+                            model.data[model.index].title,
+                            style: kHeadingTextStyle.copyWith(
+                              fontSize: 35
+                            )
+                          ),
                         ),
                       ),
                     ),

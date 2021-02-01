@@ -24,66 +24,104 @@ class AdultView extends StatelessWidget {
           body: Padding(
             padding: EdgeInsets.symmetric(horizontal: model.getSizingService().blockSizeHorizontal * 5),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Text(
-                      "Adult, please enter a reward",
-                      style: kHeadingTextStyle.copyWith(
-                        fontSize: 21
-                      ),
-                    ),
-                    IconButton(
-                      icon: Icon(
-                        Icons.info,
-                        size: model.getSizingService().blockSizeHorizontal * 7.5,
-                        color: Colors.black,
-                      ),
-                      onPressed: () => model.openHelperSheet()
-                    )
-                  ],
-                ),
-                Container(
-                  padding: EdgeInsets.only(
-                    top: model.getSizingService().blockSizeVertical * 2.5,
-                    bottom: model.getSizingService().blockSizeVertical * 4
-                  ),
-                  width: model.getSizingService().blockSizeHorizontal * 90,
-                  child: Text(
-                    "Before we get started, we need to know the all important reward.",
-                    style: kParagraphTextStyle.copyWith(
-                      fontSize: 15
-                    ),
-                  ),
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        'What\'s the reward?',
-                        style: GoogleFonts.montserrat(
-                          fontSize: 10,
-                          color: const Color(0xff000000),
-                          fontWeight: FontWeight.w600,
-                        ),
-                        textAlign: TextAlign.left,
-                      ),
-                    ),
                     Padding(
-                      padding: EdgeInsets.only(bottom: 10),
-                      child: Align(
-                        alignment: Alignment.topLeft,
-                        child: Form(
-                          key: model.formKey,
-                          child: _HookTextField()
-                        )
-                      ),
+                      padding: EdgeInsets.only(top: model.getSizingService().topPadding + model.getSizingService().blockSizeVertical * 3),
+                      child: GestureDetector(
+                          onTap: () {
+                            model.updateReward('');
+                            model.saveReward();
+                            model.navigateToMucyEmotion();
+                          },
+                          child: Row(
+                            children: [
+                              Text(
+                                "Skip",
+                                style: GoogleFonts.montserrat(
+                                  fontSize: 15,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                              Icon(
+                                Icons.keyboard_arrow_right,
+                                color: Colors.black,
+                                size: 28,
+                              ),
+                            ],
+                          )
+                      )
                     )
                   ],
+                ),
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Adult, please enter a reward",
+                            style: kHeadingTextStyle.copyWith(
+                                fontSize: 21
+                            ),
+                          ),
+                          IconButton(
+                              icon: Icon(
+                                Icons.info,
+                                size: model.getSizingService().blockSizeHorizontal * 7.5,
+                                color: Colors.black,
+                              ),
+                              onPressed: () => model.openHelperSheet()
+                          )
+                        ],
+                      ),
+                      Container(
+                        padding: EdgeInsets.only(
+                            top: model.getSizingService().blockSizeVertical * 2.5,
+                            bottom: model.getSizingService().blockSizeVertical * 4
+                        ),
+                        width: model.getSizingService().blockSizeHorizontal * 90,
+                        child: Text(
+                          "Before we get started, we need to know the all important reward.",
+                          style: kParagraphTextStyle.copyWith(
+                              fontSize: 15
+                          ),
+                        ),
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                              'What\'s the reward?',
+                              style: GoogleFonts.montserrat(
+                                fontSize: 10,
+                                color: const Color(0xff000000),
+                                fontWeight: FontWeight.w600,
+                              ),
+                              textAlign: TextAlign.left,
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(bottom: 10),
+                            child: Align(
+                                alignment: Alignment.topLeft,
+                                child: Form(
+                                    key: model.formKey,
+                                    child: _HookTextField()
+                                )
+                            ),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
                 )
               ],
             )
