@@ -28,21 +28,14 @@ class TappingViewModel extends BaseViewModel {
   final HelperDialogService _dialogService = locator<HelperDialogService>();
   final NavigationService _navigationService = locator<NavigationService>();
 
-  int index = 0;
-
   bool runAnimation = true;
-
   bool _firstBuild = true;
 
-  void nextPage() {
-    runAnimation = !runAnimation;
-    index++;
+  int _currentPage = 0;
+  int get currentPage => _currentPage;
 
-    if (index > 8) {
-      _navigationService.clearStackAndShow(Routes.breatheView);
-      return;
-    }
-
+  void updatePage(int page) {
+    _currentPage = page;
     notifyListeners();
   }
 
@@ -51,6 +44,10 @@ class TappingViewModel extends BaseViewModel {
       showHelpDialog();
       _firstBuild = false;
     }
+  }
+
+  void navigateToBreathe() {
+    _navigationService.clearStackAndShow(Routes.breatheView);
   }
 
   void showHelpDialog() {

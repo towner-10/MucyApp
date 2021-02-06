@@ -1,5 +1,4 @@
 import 'package:auto_animated/auto_animated.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mucy/models/emotion_data.dart';
 import 'package:mucy/ui/elements/emotion_ui_element.dart';

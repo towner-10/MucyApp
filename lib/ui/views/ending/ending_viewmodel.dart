@@ -27,7 +27,7 @@ class EndingViewModel extends BaseViewModel {
   }
 
   void navigateToHome() {
-    _navigationService.navigateTo(Routes.homeView);
+    _navigationService.replaceWith(Routes.homeView);
   }
 
   SizingService getSizingService() {

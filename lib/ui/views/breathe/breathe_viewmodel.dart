@@ -1,19 +1,23 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:mucy/app/locator.dart';
 import 'package:mucy/app/router.gr.dart';
 import 'package:mucy/services/helper_dialog_service.dart';
 import 'package:mucy/services/sizing_service.dart';
-import 'package:mucy/services/storage_service.dart';
 import 'package:mucy/utilities/styles.dart';
-import 'package:simple_animations/simple_animations.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
+
+enum BreatheState {
+  In,
+  Out,
+  Hold
+}
 
 class BreatheViewModel extends BaseViewModel {
 
   final NavigationService _navigationService = locator<NavigationService>();
   final SizingService _sizingService = locator<SizingService>();
-  final StorageService _storage = locator<StorageService>();
   final HelperDialogService _dialogService = locator<HelperDialogService>();
 
   final int numPages = 2;
@@ -21,56 +25,77 @@ class BreatheViewModel extends BaseViewModel {
   int _currentPage = 0;
   int get currentPage => _currentPage;
 
-  bool _breatheIn = true;
-  bool get breatheIn => _breatheIn;
+  BreatheState _breatheState = BreatheState.In;
+  BreatheState get breatheState => _breatheState;
 
   int _breathCounter = 0;
+  int _breatheStateCounter = 0;
+  bool _lastBreatheAnimState = true;
 
-  int getEmotionIndex() {
-    return _storage.emotionIndex;
+  String get currentBreatheText {
+    switch(_breatheState) {
+      case BreatheState.In:
+        return "Breathe In...";
+      case BreatheState.Hold:
+        return "Hold...";
+      case BreatheState.Out:
+        return "Breathe Out...";
+    }
   }
 
+  // true = forward (5 -> 0)
+  // false = reverse (0 -> 5)
   void updateBreatheMode(bool value) {
-    _breatheIn = value;
-    _breathCounter++;
+    if (_lastBreatheAnimState == value) return;
 
-    if (_breathCounter == 4) createContinueButton();
-    if (_breathCounter > 8) navigateToEnd();
+    _breatheStateCounter++;
+
+    if (_breatheStateCounter >= 3) {
+      _breatheStateCounter = 0;
+      _breathCounter++;
+
+      if (_breathCounter == 2) createContinueButton();
+      if (_breathCounter > 5) navigateToEnd();
+    }
+
+    switch(_breatheStateCounter) {
+      case 0:
+        _breatheState = BreatheState.In;
+        break;
+      case 1:
+        _breatheState = BreatheState.Hold;
+        break;
+      case 2:
+        _breatheState = BreatheState.Out;
+    }
+
+    _lastBreatheAnimState = value;
 
     notifyListeners();
   }
 
   void createContinueButton() {
     _dialogService.showCustomBottomSheet(
-      child: PlayAnimation<double>(
-        tween: Tween(
-          begin: 0.0,
-          end: 1.0
+      child: FadeIn(
+        child: Container(
+          margin: EdgeInsets.all(15).copyWith(
+            bottom: 15 + _sizingService.bottomPadding
+          ),
+          height: 58.0,
+          child: InkWell(
+            onTap: () => navigateToEnd(),
+            child: Center(
+              child: Text(
+                'Continue',
+                style: kBottomButtonTextStyle
+              )
+            )
+          ),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20.0),
+            color: const Color(0xFF282E4E),
+          ),
         ),
-        builder: (context, child, value) {
-          return Opacity(
-            opacity: value,
-            child: Container(
-              margin: EdgeInsets.all(15).copyWith(
-                bottom: 15 + _sizingService.bottomPadding
-              ),
-              height: 58.0,
-              child: InkWell(
-                onTap: () => navigateToEnd(),
-                child: Center(
-                  child: Text(
-                    'Continue',
-                    style: kBottomButtonTextStyle
-                  )
-                )
-              ),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20.0),
-                color: const Color(0xFF282E4E),
-              ),
-            ),
-          );
-        },
       )
     );
   }
@@ -81,7 +106,7 @@ class BreatheViewModel extends BaseViewModel {
   }
 
   void navigateToEnd() {
-    _navigationService.navigateTo(Routes.endingView);
+    _navigationService.replaceWith(Routes.endingView);
   }
 
   SizingService getSizingService() {
