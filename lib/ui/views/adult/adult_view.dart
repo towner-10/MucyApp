@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:mucy/ui/elements/button_nav_button.dart';
 import 'package:mucy/utilities/backgrounds.dart';
 import 'package:mucy/utilities/styles.dart';
@@ -15,10 +14,6 @@ class AdultView extends StatelessWidget {
       builder: (context, model, child) => Container(
         decoration: BoxDecoration(
           color: Backgrounds.defaultBackgroundColor,
-          /*image: DecorationImage(
-            image: Backgrounds.defaultBackground,
-            fit: BoxFit.fitHeight
-          )*/
         ),
         child: Scaffold(
           backgroundColor: Colors.transparent,
@@ -41,10 +36,9 @@ class AdultView extends StatelessWidget {
                             children: [
                               Text(
                                 "Skip",
-                                style: GoogleFonts.montserrat(
+                                style: kMontserratSemiBold.copyWith(
                                   fontSize: 15,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w600,
+                                  color: Colors.black
                                 ),
                               ),
                               Icon(
@@ -89,8 +83,8 @@ class AdultView extends StatelessWidget {
                         width: model.getSizingService().blockSizeHorizontal * 90,
                         child: Text(
                           "Before we get started, we need to know the all important reward.",
-                          style: kParagraphTextStyle.copyWith(
-                              fontSize: 15
+                          style: kMontserratRegular.copyWith(
+                            fontSize: 15
                           ),
                         ),
                       ),
@@ -101,10 +95,9 @@ class AdultView extends StatelessWidget {
                             alignment: Alignment.centerLeft,
                             child: Text(
                               'What\'s the reward?',
-                              style: GoogleFonts.montserrat(
+                              style: kMontserratSemiBold.copyWith(
                                 fontSize: 10,
-                                color: const Color(0xff000000),
-                                fontWeight: FontWeight.w600,
+                                color: Colors.black
                               ),
                               textAlign: TextAlign.left,
                             ),
@@ -112,11 +105,11 @@ class AdultView extends StatelessWidget {
                           Padding(
                             padding: EdgeInsets.only(bottom: 10),
                             child: Align(
-                                alignment: Alignment.topLeft,
-                                child: Form(
-                                    key: model.formKey,
-                                    child: _HookTextField()
-                                )
+                              alignment: Alignment.topLeft,
+                              child: Form(
+                                key: model.formKey,
+                                child: _HookTextField()
+                              )
                             ),
                           )
                         ],
@@ -153,21 +146,18 @@ class _HookTextField extends HookViewModelWidget<AdultViewModel> {
     return TextFormField(
       controller: _controller,
       textCapitalization: TextCapitalization.words,
-      style: GoogleFonts.montserrat(
+      style: kMontserratSemiBold.copyWith(
         fontSize: 15,
-        color: Colors.black,
-        fontWeight: FontWeight.w600,
+        color: Colors.black
       ),
       cursorColor: Colors.black,
       decoration: InputDecoration(
         hintText: "Enter the reward...",
         contentPadding: EdgeInsets.only(left: 5),
-        errorStyle: GoogleFonts.montserrat(
+        errorStyle: kMontserratSemiBold.copyWith(
           fontSize: 10,
-          fontWeight: FontWeight.w600,
         ),
-        hintStyle: GoogleFonts.montserrat(
-          fontWeight: FontWeight.w500,
+        hintStyle: kMontserratSemiBold.copyWith(
           fontSize: 15,
         ),
         enabledBorder: UnderlineInputBorder(

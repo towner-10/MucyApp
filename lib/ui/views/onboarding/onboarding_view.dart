@@ -1,7 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:mucy/ui/elements/button_nav_button.dart';
 import 'package:mucy/utilities/styles.dart';
 import 'package:stacked/stacked.dart';
@@ -57,9 +56,9 @@ class OnboardingView extends StatelessWidget {
                                     alignment: Alignment.center,
                                     child: Text(
                                       'I am Mucy the Meerkat.',
-                                      style: GoogleFonts.montserrat(
+                                      style: kMontserratRegular.copyWith(
                                         fontSize: 20,
-                                        color: const Color(0xffffffff),
+                                        color: Colors.white,
                                       ),
                                       textAlign: TextAlign.center,
                                     )
@@ -118,7 +117,9 @@ class OnboardingView extends StatelessWidget {
                                       alignment: Alignment.centerLeft,
                                       child: Text(
                                         'Before we get started, what is your name?',
-                                        style: kParagraphTextStyle,
+                                        style: kMontserratRegular.copyWith(
+                                          fontSize: 15,
+                                        ),
                                         textAlign: TextAlign.left,
                                       )
                                     ),
@@ -136,10 +137,9 @@ class OnboardingView extends StatelessWidget {
                                             alignment: Alignment.centerLeft,
                                             child: Text(
                                               'What\'s your name?',
-                                              style: GoogleFonts.montserrat(
+                                              style: kMontserratSemiBold.copyWith(
                                                 fontSize: 10,
-                                                color: const Color(0xff000000),
-                                                fontWeight: FontWeight.w600,
+                                                color: Colors.black
                                               ),
                                               textAlign: TextAlign.left,
                                             ),
@@ -202,7 +202,9 @@ class OnboardingView extends StatelessWidget {
                                     height: model.getSizingService().blockSizeVertical * 5,
                                     child: Text(
                                       'Nice to meet you!',
-                                      style: kParagraphTextStyle,
+                                      style: kMontserratRegular.copyWith(
+                                        fontSize: 15,
+                                      ),
                                       textAlign: TextAlign.center,
                                     )
                                   ),
@@ -239,10 +241,9 @@ class OnboardingView extends StatelessWidget {
                                             top: model.getSizingService().blockSizeVertical * 1.5,
                                             child: Text(
                                               'Hi, my name is',
-                                              style: GoogleFonts.montserrat(
+                                              style: kMontserratSemiBold.copyWith(
                                                 fontSize: 18,
-                                                color: const Color(0xff000000),
-                                                fontWeight: FontWeight.w600,
+                                                color: Colors.black
                                               ),
                                               textAlign: TextAlign.center,
                                             )
@@ -299,22 +300,19 @@ class _HookTextField extends HookViewModelWidget<OnboardingViewModel> {
     return TextFormField(
       controller: _controller,
       textCapitalization: TextCapitalization.words,
-      style: GoogleFonts.montserrat(
-        fontSize: 18,
-        color: Colors.black,
-        fontWeight: FontWeight.w600,
+      style: kMontserratSemiBold.copyWith(
+        fontSize: 15,
+        color: Colors.black
       ),
       cursorColor: Colors.black,
       decoration: InputDecoration(
         hintText: "Enter your name...",
         contentPadding: EdgeInsets.only(left: 5),
-        errorStyle: GoogleFonts.montserrat(
+        errorStyle: kMontserratSemiBold.copyWith(
           fontSize: 10,
-          fontWeight: FontWeight.w600,
         ),
-        hintStyle: GoogleFonts.montserrat(
-          fontWeight: FontWeight.w500,
-          fontSize: 18,
+        hintStyle: kMontserratMedium.copyWith(
+          fontSize: 15,
         ),
         enabledBorder: UnderlineInputBorder(
           borderSide: new BorderSide(

@@ -19,10 +19,6 @@ class TappingView extends StatelessWidget {
           height: model.getSizingService().screenHeight,
           decoration: BoxDecoration(
             color: Backgrounds.defaultBackgroundColor
-            /*image: DecorationImage(
-              image: Backgrounds.defaultBackground,
-              fit: BoxFit.fitHeight
-            )*/
           ),
           child: PageView.builder(
             itemCount: model.data.length,
@@ -71,7 +67,7 @@ class TappingView extends StatelessWidget {
                           child: BounceInRight(
                             child: Text(
                               '"' + model.data[index].quote + '"',
-                              style: kParagraphTextStyle.copyWith(
+                              style: kMontserratRegular.copyWith(
                                 fontSize: 25
                               ),
                               textAlign: TextAlign.center,

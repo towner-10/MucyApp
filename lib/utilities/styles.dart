@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 final kLoadingTextStyle = TextStyle(
   fontFamily: "VAG Rounded STD",
@@ -8,23 +7,35 @@ final kLoadingTextStyle = TextStyle(
   fontSize: 50.0
 );
 
-final kBottomButtonTextStyle = GoogleFonts.montserrat(
+final kBottomButtonTextStyle = TextStyle(
+  fontFamily: "Montserrat",
   fontSize: 18,
   color: Colors.white,
-  fontWeight: FontWeight.w700,
+  fontWeight: FontWeight.w700
 );
 
 final kHeadingTextStyle = TextStyle(
   fontFamily: "VAG Rounded STD",
   fontSize: 25,
-  fontWeight: FontWeight.w700,
+  fontWeight: FontWeight.w700
 );
 
-final kSubHeadingTextStyle = GoogleFonts.montserrat(
-  fontSize: 18,
-  fontWeight: FontWeight.w700,
+final kMontserratRegular = TextStyle(
+  fontFamily: "Montserrat",
+  fontWeight: FontWeight.w400
 );
 
-final kParagraphTextStyle = GoogleFonts.montserrat(
-  fontSize: 15
+final kMontserratBold = TextStyle(
+  fontFamily: "Montserrat",
+  fontWeight: FontWeight.w700
+);
+
+final kMontserratSemiBold = TextStyle(
+  fontFamily: "Montserrat",
+  fontWeight: FontWeight.w600
+);
+
+final kMontserratMedium = TextStyle(
+  fontFamily: "Montserrat",
+  fontWeight: FontWeight.w500
 );

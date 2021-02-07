@@ -59,7 +59,7 @@ class BreatheView extends StatelessWidget {
                           alignment: Alignment.topCenter,
                           child: Text(
                             'Now, let\'s do some breathing.',
-                            style: kParagraphTextStyle.copyWith(
+                            style: kMontserratRegular.copyWith(
                               fontSize: 20,
                               color: Colors.white
                             ),
@@ -130,7 +130,7 @@ class BreatheView extends StatelessWidget {
                         },
                         child: Text(
                           model.currentBreatheText,
-                          style: kParagraphTextStyle.copyWith(
+                          style: kMontserratRegular.copyWith(
                             fontSize: 30,
                             color: Colors.white
                           ),

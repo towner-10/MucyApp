@@ -1,6 +1,5 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:mucy/models/emotion_data.dart';
 import 'package:mucy/utilities/backgrounds.dart';
 import 'package:mucy/utilities/styles.dart';
@@ -16,10 +15,6 @@ class EndingView extends StatelessWidget {
       builder: (context, model, child) => Container(
         decoration: BoxDecoration(
           color: Backgrounds.defaultBackgroundColor
-          /*image: DecorationImage(
-            image: Backgrounds.defaultBackground,
-            fit: BoxFit.fitHeight
-          )*/
         ),
         child: SingleChildScrollView(
           child: Container(
@@ -161,7 +156,7 @@ class EndingView extends StatelessWidget {
                           width: model.getSizingService().blockSizeHorizontal * 50,
                           child: Text(
                             model.feelingBetter ? 'Have a marvelous Mucy Day.' : 'Feel better and have a marvelous Mucy Day.',
-                            style: kParagraphTextStyle.copyWith(
+                            style: kMontserratRegular.copyWith(
                               fontSize: 20
                             ),
                             textAlign: TextAlign.center,
@@ -200,10 +195,9 @@ class EndingView extends StatelessWidget {
                                     top: model.getSizingService().blockSizeVertical * 1.5,
                                     child: Text(
                                       'Reward',
-                                      style: GoogleFonts.montserrat(
+                                      style: kMontserratSemiBold.copyWith(
                                         fontSize: 18,
-                                        color: const Color(0xff000000),
-                                        fontWeight: FontWeight.w600,
+                                        color: Colors.black
                                       ),
                                       textAlign: TextAlign.center,
                                     )

@@ -40,7 +40,7 @@ class EmotionView extends StatelessWidget {
                       ),
                       Text(
                         "How are you feeling?",
-                        style: kParagraphTextStyle.copyWith(
+                        style: kMontserratRegular.copyWith(
                           fontSize: 20
                         ),
                       ),
