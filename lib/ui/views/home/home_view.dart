@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mucy/ui/elements/button_nav_button.dart';
 import 'package:mucy/utilities/backgrounds.dart';
 import 'package:mucy/utilities/styles.dart';
 import 'package:stacked/stacked.dart';
@@ -16,7 +17,7 @@ class HomeView extends StatelessWidget {
           height: model.getSizingService().screenHeight,
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: Backgrounds.blueMucyBackground,
+              image:Backgrounds.blueMucyBackground,
               fit: BoxFit.fitHeight
             )
           ),
@@ -63,27 +64,15 @@ class HomeView extends StatelessWidget {
             )
           )
         ),
-        bottomNavigationBar: Container(
-          margin: EdgeInsets.all(15).copyWith(
-            bottom: 15 + model.getSizingService().bottomPadding
-          ),
-          height: 58.0,
-          child: InkWell(
-            borderRadius: BorderRadius.circular(20.0),
-            onTap: () => model.navigateToAdultReward(),
-            child: Center(
-              child: Text(
-                'Let\'s get started',
-                style: kBottomButtonTextStyle
-              )
-            )
-          ),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20.0),
-            color: const Color(0xff282e4e),
-          ),
-        ),
+        bottomNavigationBar: BottomNavButton(
+          text: 'Let\'s get started',
+          color: const Color(0xff282e4e),
+          callback: () => model.navigateToAdultReward(),
+        )
       ),
+      onModelReady: (model) async {
+        await precacheImage(Backgrounds.blueMucyBackground, context);
+      },
       viewModelBuilder: () => HomeViewModel(),
     );
   }

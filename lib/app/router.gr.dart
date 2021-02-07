@@ -7,6 +7,7 @@
 // ignore_for_file: public_member_api_docs
 
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/material.dart';
 
 import '../ui/views/adult/adult_view.dart';
 import '../ui/views/breathe/breathe_view.dart';
@@ -55,51 +56,60 @@ class MucyRouter extends RouterBase {
   Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
   final _pagesMap = <Type, AutoRouteFactory>{
     StartupView: (data) {
-      return buildAdaptivePageRoute<dynamic>(
-        builder: (context) => StartupView(),
+      return PageRouteBuilder<dynamic>(
+        pageBuilder: (context, animation, secondaryAnimation) => StartupView(),
         settings: data,
+        transitionsBuilder: TransitionsBuilders.fadeIn,
       );
     },
     OnboardingView: (data) {
-      return buildAdaptivePageRoute<dynamic>(
-        builder: (context) => OnboardingView(),
+      return PageRouteBuilder<dynamic>(
+        pageBuilder: (context, animation, secondaryAnimation) =>
+            OnboardingView(),
         settings: data,
+        transitionsBuilder: TransitionsBuilders.fadeIn,
       );
     },
     HomeView: (data) {
-      return buildAdaptivePageRoute<dynamic>(
-        builder: (context) => HomeView(),
+      return PageRouteBuilder<dynamic>(
+        pageBuilder: (context, animation, secondaryAnimation) => HomeView(),
         settings: data,
+        transitionsBuilder: TransitionsBuilders.fadeIn,
       );
     },
     AdultView: (data) {
-      return buildAdaptivePageRoute<dynamic>(
-        builder: (context) => AdultView(),
+      return PageRouteBuilder<dynamic>(
+        pageBuilder: (context, animation, secondaryAnimation) => AdultView(),
         settings: data,
+        transitionsBuilder: TransitionsBuilders.fadeIn,
       );
     },
     EmotionView: (data) {
-      return buildAdaptivePageRoute<dynamic>(
-        builder: (context) => EmotionView(),
+      return PageRouteBuilder<dynamic>(
+        pageBuilder: (context, animation, secondaryAnimation) => EmotionView(),
         settings: data,
+        transitionsBuilder: TransitionsBuilders.fadeIn,
       );
     },
     TappingView: (data) {
-      return buildAdaptivePageRoute<dynamic>(
-        builder: (context) => TappingView(),
+      return PageRouteBuilder<dynamic>(
+        pageBuilder: (context, animation, secondaryAnimation) => TappingView(),
         settings: data,
+        transitionsBuilder: TransitionsBuilders.slideLeft,
       );
     },
     BreatheView: (data) {
-      return buildAdaptivePageRoute<dynamic>(
-        builder: (context) => BreatheView(),
+      return PageRouteBuilder<dynamic>(
+        pageBuilder: (context, animation, secondaryAnimation) => BreatheView(),
         settings: data,
+        transitionsBuilder: TransitionsBuilders.fadeIn,
       );
     },
     EndingView: (data) {
-      return buildAdaptivePageRoute<dynamic>(
-        builder: (context) => EndingView(),
+      return PageRouteBuilder<dynamic>(
+        pageBuilder: (context, animation, secondaryAnimation) => EndingView(),
         settings: data,
+        transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
       );
     },
   };

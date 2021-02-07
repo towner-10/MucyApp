@@ -4,6 +4,7 @@ import 'package:mucy/app/locator.dart';
 import 'package:mucy/app/router.gr.dart';
 import 'package:mucy/services/helper_dialog_service.dart';
 import 'package:mucy/services/sizing_service.dart';
+import 'package:mucy/ui/elements/button_nav_button.dart';
 import 'package:mucy/utilities/styles.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -77,25 +78,11 @@ class BreatheViewModel extends BaseViewModel {
   void createContinueButton() {
     _dialogService.showCustomBottomSheet(
       child: FadeIn(
-        child: Container(
-          margin: EdgeInsets.all(15).copyWith(
-            bottom: 15 + _sizingService.bottomPadding
-          ),
-          height: 58.0,
-          child: InkWell(
-            onTap: () => navigateToEnd(),
-            child: Center(
-              child: Text(
-                'Continue',
-                style: kBottomButtonTextStyle
-              )
-            )
-          ),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20.0),
-            color: const Color(0xFF282E4E),
-          ),
-        ),
+        child: BottomNavButton(
+          text: 'Continue',
+          color: const Color(0xFF282E4E),
+          callback: () => navigateToEnd(),
+        )
       )
     );
   }
@@ -106,7 +93,7 @@ class BreatheViewModel extends BaseViewModel {
   }
 
   void navigateToEnd() {
-    _navigationService.replaceWith(Routes.endingView);
+    _navigationService.clearStackAndShow(Routes.endingView);
   }
 
   SizingService getSizingService() {

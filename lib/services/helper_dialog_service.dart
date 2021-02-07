@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:injectable/injectable.dart';
 import 'package:mucy/app/locator.dart';
 import 'package:mucy/services/sizing_service.dart';
+import 'package:mucy/ui/elements/button_nav_button.dart';
 import 'package:mucy/utilities/styles.dart';
 
 @lazySingleton
@@ -90,27 +91,12 @@ class HelperDialogService {
                     ],
                   )
                 ),
-                Container(
-                  margin: EdgeInsets.all(15).copyWith(
-                    bottom: 15 + _sizingService.bottomPadding
-                  ),
-                  height: 58.0,
-                  child: InkWell(
-                    onTap: () => Navigator.pop(context),
-                    child: Center(
-                      child: Text(
-                        'Close',
-                        style: kBottomButtonTextStyle.copyWith(
-                          color: Colors.black
-                        )
-                      )
-                    )
-                  ),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20.0),
-                    color: const Color(0xFFEFF0F3),
-                  ),
-                ),
+                BottomNavButton(
+                  text: 'Close',
+                  color: const Color(0xFFEFF0F3),
+                  callback: () => Navigator.pop(context),
+                  textColor: Colors.black,
+                )
               ],
             ),
           ),

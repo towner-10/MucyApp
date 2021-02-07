@@ -6,6 +6,7 @@ import 'package:injectable/injectable.dart';
 class StorageService {
 
   Box _settings;
+  Box _tapping;
 
   StorageService() {
     initalize();
@@ -15,14 +16,18 @@ class StorageService {
     await Hive.initFlutter();
     
     _settings = await Hive.openBox("settings");
+    _tapping = await Hive.openBox("tapping");
   }
 
   set name(String value) => _settings.put('name', value);
   String get name => _settings.get('name', defaultValue: '');
 
-  set reward(String value) => _settings.put('reward', value);
-  String get reward => _settings.get('reward', defaultValue: '');
+  set reward(String value) => _tapping.put('reward', value);
+  String get reward => _tapping.get('reward', defaultValue: '');
 
-  set emotionIndex(int value) => _settings.put('emotion', value);
-  int get emotionIndex => _settings.get('emotion', defaultValue: '');
+  set emotionIndex(int value) => _tapping.put('emotion', value);
+  int get emotionIndex => _tapping.get('emotion', defaultValue: '');
+
+  set firstTapping(bool value) => _tapping.put('firstTapping', value);
+  bool get firstTapping => _tapping.get('firstTapping', defaultValue: true);
 }

@@ -2,6 +2,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mucy/ui/elements/button_nav_button.dart';
 import 'package:mucy/utilities/styles.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_hooks/stacked_hooks.dart';
@@ -67,26 +68,11 @@ class OnboardingView extends StatelessWidget {
                               ],
                             ),
                           ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(vertical: model.getSizingService().blockSizeVertical * 5),
-                            child: InkWell(
-                              onTap: () => _pageController.animateToPage(model.currentPage + 1, duration: Duration(milliseconds: 300), curve: Curves.easeInToLinear),
-                              child: Container(
-                                width: 331.0,
-                                height: model.getSizingService().blockSizeVertical * 7.2,
-                                child: Center(
-                                  child: Text(
-                                    'Continue',
-                                    style: kBottomButtonTextStyle,
-                                  )
-                                ),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20.0),
-                                  color: const Color(0xff282e4e),
-                                ),
-                              ),
-                            ),
-                          ),
+                          BottomNavButton(
+                            text: 'Continue',
+                            color: const Color(0xff282e4e),
+                            callback: () => _pageController.animateToPage(model.currentPage + 1, duration: Duration(milliseconds: 300), curve: Curves.easeInToLinear),
+                          )
                         ],
                       )
                     )
@@ -126,7 +112,7 @@ class OnboardingView extends StatelessWidget {
                                 ),
                                 FadeInRight(
                                   child: Container(
-                                    height: model.getSizingService().blockSizeVertical * 8,
+                                    height: model.getSizingService().blockSizeVertical * 5,
                                     padding: EdgeInsets.only(left: model.getSizingService().blockSizeHorizontal * 7),
                                     child: Align(
                                       alignment: Alignment.centerLeft,
@@ -179,31 +165,16 @@ class OnboardingView extends StatelessWidget {
                               ],
                             ),
                           ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(vertical: model.getSizingService().blockSizeVertical * 5),
-                            child: InkWell(
-                              onTap: () {
-                                if (model.formKey.currentState.validate()) {
-                                  model.formKey.currentState.save();
-                                  _pageController.animateToPage(model.currentPage + 1, duration: Duration(milliseconds: 300), curve: Curves.easeInToLinear);
-                                }
-                              },
-                              child: Container(
-                                width: 331.0,
-                                height: model.getSizingService().blockSizeVertical * 7.2,
-                                child: Center(
-                                  child: Text(
-                                    'Get started',
-                                    style: kBottomButtonTextStyle
-                                  )
-                                ),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20.0),
-                                  color: const Color(0xff6776c1),
-                                ),
-                              ),
-                            ),
-                          ),
+                          BottomNavButton(
+                            text: 'Get Started',
+                            color: const Color(0xff6776c1),
+                            callback: () {
+                              if (model.formKey.currentState.validate()) {
+                                model.formKey.currentState.save();
+                                _pageController.animateToPage(model.currentPage + 1, duration: Duration(milliseconds: 300), curve: Curves.easeInToLinear);
+                              }
+                            },
+                          )
                         ],
                       )
                     )
@@ -215,12 +186,12 @@ class OnboardingView extends StatelessWidget {
                         children: [
                           Expanded(
                             child: Column(
-                              mainAxisAlignment: MainAxisAlignment.end,
+                              mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 Container(
                                   width: model.getSizingService().blockSizeHorizontal * 70,
                                   height: model.getSizingService().blockSizeVertical * 50,
-                                  padding: EdgeInsets.symmetric(vertical: 20),
+                                  margin: EdgeInsets.symmetric(vertical: model.getSizingService().blockSizeVertical),
                                   child: Image(
                                     fit: BoxFit.fitWidth,
                                     image: AssetImage("assets/images/pinkMucyHead.png"),
@@ -237,7 +208,7 @@ class OnboardingView extends StatelessWidget {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsets.only(bottom: 10),
+                                  padding: EdgeInsets.only(bottom: 20),
                                   child: FadeInRight(
                                     child: Container(
                                       width: model.getSizingService().blockSizeHorizontal * 70,
@@ -300,26 +271,11 @@ class OnboardingView extends StatelessWidget {
                               ],
                             ),
                           ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(vertical: model.getSizingService().blockSizeVertical * 5),
-                            child: InkWell(
-                              onTap: () => model.navigateToHome(),
-                              child: Container(
-                                width: 331.0,
-                                height: model.getSizingService().blockSizeVertical * 7.2,
-                                child: Center(
-                                  child: Text(
-                                    'Let\'s go',
-                                    style: kBottomButtonTextStyle
-                                  )
-                                ),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20.0),
-                                  color: const Color(0xffcc708a),
-                                ),
-                              ),
-                            ),
-                          ),
+                          BottomNavButton(
+                            text: 'Let\'s go',
+                            color: const Color(0xffcc708a),
+                            callback: () => model.navigateToHome(),
+                          )
                         ],
                       )
                     )

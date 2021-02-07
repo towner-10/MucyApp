@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mucy/ui/elements/button_nav_button.dart';
 import 'package:mucy/utilities/backgrounds.dart';
 import 'package:mucy/utilities/styles.dart';
 import 'package:stacked/stacked.dart';
@@ -126,31 +127,17 @@ class AdultView extends StatelessWidget {
               ],
             )
           ),
-          bottomNavigationBar: Container(
-            margin: EdgeInsets.all(15).copyWith(
-              bottom: 15 + model.getSizingService().bottomPadding
-            ),
-            height: 58.0,
-            child: InkWell(
-              onTap: () {
-                if (model.formKey.currentState.validate()) {
-                  model.formKey.currentState.save();
-                  model.saveReward();
-                  model.navigateToMucyEmotion();
-                }
-              },
-              child: Center(
-                child: Text(
-                  'Continue',
-                  style: kBottomButtonTextStyle
-                )
-              )
-            ),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20.0),
-              color: const Color(0xFF6776C1),
-            ),
-          ),
+          bottomNavigationBar: BottomNavButton(
+            text: 'Continue',
+            color: const Color(0xFF6776C1),
+            callback: () {
+              if (model.formKey.currentState.validate()) {
+                model.formKey.currentState.save();
+                model.saveReward();
+                model.navigateToMucyEmotion();
+              }
+            },
+          )
         ),
       ),
       viewModelBuilder: () => AdultViewModel(),

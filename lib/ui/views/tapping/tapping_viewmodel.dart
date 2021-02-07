@@ -29,7 +29,6 @@ class TappingViewModel extends BaseViewModel {
   final NavigationService _navigationService = locator<NavigationService>();
 
   bool runAnimation = true;
-  bool _firstBuild = true;
 
   int _currentPage = 0;
   int get currentPage => _currentPage;
@@ -40,9 +39,9 @@ class TappingViewModel extends BaseViewModel {
   }
 
   void startup() {
-    if (_firstBuild == true) {
+    if (_storageService.firstTapping == true) {
       showHelpDialog();
-      _firstBuild = false;
+      _storageService.firstTapping = false;
     }
   }
 

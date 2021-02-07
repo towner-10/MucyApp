@@ -1,5 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:mucy/ui/elements/button_nav_button.dart';
 import 'package:mucy/utilities/backgrounds.dart';
 import 'package:mucy/utilities/styles.dart';
 import 'package:stacked/stacked.dart';
@@ -89,29 +90,14 @@ class TappingView extends StatelessWidget {
                   builder: (context, snap) {
                     if (snap.data) {
                       return FadeIn(
-                        child: Container(
-                          margin: EdgeInsets.all(15).copyWith(
-                            bottom: 15 + model.getSizingService().bottomPadding
-                          ),
-                          height: 58.0,
-                          child: InkWell(
-                            borderRadius: BorderRadius.circular(20.0),
-                            onTap: () {
-                              if (model.currentPage >= 8) model.navigateToBreathe();
-                              else _pageController.nextPage(duration: const Duration(milliseconds: 400), curve: Curves.easeIn);
-                            } ,
-                            child: Center(
-                              child: Text(
-                                'Continue',
-                                style: kBottomButtonTextStyle
-                              )
-                            )
-                          ),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20.0),
-                            color: model.data[index].color,
-                          ),
-                        ),
+                        child: BottomNavButton(
+                          text: 'Continue', 
+                          color: model.data[index].color,
+                          callback: () {
+                            if (model.currentPage >= 8) model.navigateToBreathe();
+                            else _pageController.nextPage(duration: const Duration(milliseconds: 400), curve: Curves.easeIn);
+                          },
+                        )
                       );
                     }
                     return Container(
