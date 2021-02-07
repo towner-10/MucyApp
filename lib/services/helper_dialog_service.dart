@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
@@ -43,10 +44,15 @@ class HelperDialogService {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Icon(
-                        Icons.info,
-                        size: _sizingService.blockSizeHorizontal * 7.5,
-                        color: Colors.black,
+                      Bounce(
+                        from: 15,
+                        duration: const Duration(milliseconds: 800),
+                        delay: const Duration(milliseconds: 100),
+                        child: Icon(
+                          Icons.info,
+                          size: _sizingService.blockSizeHorizontal * 7.5,
+                          color: Colors.black,
+                        ),
                       ),
                       Padding(
                         padding: EdgeInsets.only(

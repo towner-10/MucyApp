@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -13,12 +14,7 @@ class OnboardingView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder<OnboardingViewModel>.reactive(
       builder: (context, model, child) => Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: model.currentBackgroundImage,
-            fit: BoxFit.fitHeight
-          )
-        ),
+        decoration: model.currentBackgroundDecoration,
         child: Scaffold(
           backgroundColor: Colors.transparent,
           body: SingleChildScrollView(
@@ -104,36 +100,42 @@ class OnboardingView extends StatelessWidget {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
-                                Container(
-                                  width: model.getSizingService().blockSizeHorizontal * 70,
-                                  height: model.getSizingService().blockSizeVertical * 50,
-                                  padding: EdgeInsets.symmetric(vertical: 20),
-                                  child: Image(
-                                    fit: BoxFit.fitWidth,
-                                    image: AssetImage("assets/images/blueMucyHead.png"),
-                                  )
-                                ),
-                                Container(
-                                  padding: EdgeInsets.only(left: model.getSizingService().blockSizeHorizontal * 7),
-                                  child: Align(
-                                    alignment: Alignment.centerLeft,
-                                    child: Text(
-                                      'Getting to know you',
-                                      style: kHeadingTextStyle,
-                                      textAlign: TextAlign.left,
+                                FadeIn(
+                                  child: Container(
+                                    width: model.getSizingService().blockSizeHorizontal * 70,
+                                    height: model.getSizingService().blockSizeVertical * 50,
+                                    padding: EdgeInsets.symmetric(vertical: 20),
+                                    child: Image(
+                                      fit: BoxFit.fitWidth,
+                                      image: AssetImage("assets/images/blueMucyHead.png"),
                                     )
                                   ),
                                 ),
-                                Container(
-                                  height: model.getSizingService().blockSizeVertical * 8,
-                                  padding: EdgeInsets.only(left: model.getSizingService().blockSizeHorizontal * 7),
-                                  child: Align(
-                                    alignment: Alignment.centerLeft,
-                                    child: Text(
-                                      'Before we get started, what is your name?',
-                                      style: kParagraphTextStyle,
-                                      textAlign: TextAlign.left,
-                                    )
+                                BounceInRight(
+                                  child: Container(
+                                    padding: EdgeInsets.only(left: model.getSizingService().blockSizeHorizontal * 7),
+                                    child: Align(
+                                      alignment: Alignment.centerLeft,
+                                      child: Text(
+                                        'Getting to know you',
+                                        style: kHeadingTextStyle,
+                                        textAlign: TextAlign.left,
+                                      )
+                                    ),
+                                  ),
+                                ),
+                                FadeInRight(
+                                  child: Container(
+                                    height: model.getSizingService().blockSizeVertical * 8,
+                                    padding: EdgeInsets.only(left: model.getSizingService().blockSizeHorizontal * 7),
+                                    child: Align(
+                                      alignment: Alignment.centerLeft,
+                                      child: Text(
+                                        'Before we get started, what is your name?',
+                                        style: kParagraphTextStyle,
+                                        textAlign: TextAlign.left,
+                                      )
+                                    ),
                                   ),
                                 ),
                                 Expanded(
@@ -224,70 +226,74 @@ class OnboardingView extends StatelessWidget {
                                     image: AssetImage("assets/images/pinkMucyHead.png"),
                                   )
                                 ),
-                                Container(
-                                  height: model.getSizingService().blockSizeVertical * 5,
-                                  child: Text(
-                                    'Nice to meet you!',
-                                    style: kParagraphTextStyle,
-                                    textAlign: TextAlign.center,
-                                  )
+                                BounceInRight(
+                                  child: Container(
+                                    height: model.getSizingService().blockSizeVertical * 5,
+                                    child: Text(
+                                      'Nice to meet you!',
+                                      style: kParagraphTextStyle,
+                                      textAlign: TextAlign.center,
+                                    )
+                                  ),
                                 ),
                                 Padding(
                                   padding: EdgeInsets.only(bottom: 10),
-                                  child: Container(
-                                    width: model.getSizingService().blockSizeHorizontal * 70,
-                                    height: model.getSizingService().blockSizeVertical * 18,
-                                    child: Stack(
-                                      fit: StackFit.loose,
-                                      alignment: AlignmentDirectional.center,
-                                      children: [
-                                        Container(
-                                          width: model.getSizingService().blockSizeHorizontal * 70,
-                                          height: model.getSizingService().blockSizeVertical * 18,
-                                          decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(27.0),
-                                            border: Border.all(width: 2.0, color: const Color(0xff000000)),
-                                          ),
-                                        ),
-                                        Positioned(
-                                          top: model.getSizingService().blockSizeVertical * 4,
-                                          child: Container(
-                                            width: 233,
-                                            child: Divider(
-                                              thickness: 2,
-                                              color: Colors.black,
+                                  child: FadeInRight(
+                                    child: Container(
+                                      width: model.getSizingService().blockSizeHorizontal * 70,
+                                      height: model.getSizingService().blockSizeVertical * 18,
+                                      child: Stack(
+                                        fit: StackFit.loose,
+                                        alignment: AlignmentDirectional.center,
+                                        children: [
+                                          Container(
+                                            width: model.getSizingService().blockSizeHorizontal * 70,
+                                            height: model.getSizingService().blockSizeVertical * 18,
+                                            decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.circular(27.0),
+                                              border: Border.all(width: 2.0, color: const Color(0xff000000)),
                                             ),
                                           ),
-                                        ),
-                                        Positioned(
-                                          top: model.getSizingService().blockSizeVertical * 1.5,
-                                          child: Text(
-                                            'Hi, my name is',
-                                            style: GoogleFonts.montserrat(
-                                              fontSize: 18,
-                                              color: const Color(0xff000000),
-                                              fontWeight: FontWeight.w600,
+                                          Positioned(
+                                            top: model.getSizingService().blockSizeVertical * 4,
+                                            child: Container(
+                                              width: 233,
+                                              child: Divider(
+                                                thickness: 2,
+                                                color: Colors.black,
+                                              ),
                                             ),
-                                            textAlign: TextAlign.center,
-                                          )
-                                        ),
-                                        Positioned(
-                                          bottom: model.getSizingService().blockSizeVertical * 3,
-                                          child: Container(
-                                            width: model.getSizingService().blockSizeHorizontal * 65,
-                                            child: FittedBox(
-                                              fit: BoxFit.scaleDown,
-                                              child: Text(
-                                                model.currentName,
-                                                style: kHeadingTextStyle.copyWith(
-                                                  fontSize: 50,
-                                                ),
-                                                textAlign: TextAlign.center,
+                                          ),
+                                          Positioned(
+                                            top: model.getSizingService().blockSizeVertical * 1.5,
+                                            child: Text(
+                                              'Hi, my name is',
+                                              style: GoogleFonts.montserrat(
+                                                fontSize: 18,
+                                                color: const Color(0xff000000),
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                              textAlign: TextAlign.center,
+                                            )
+                                          ),
+                                          Positioned(
+                                            bottom: model.getSizingService().blockSizeVertical * 3,
+                                            child: Container(
+                                              width: model.getSizingService().blockSizeHorizontal * 65,
+                                              child: FittedBox(
+                                                fit: BoxFit.scaleDown,
+                                                child: Text(
+                                                  model.currentName,
+                                                  style: kHeadingTextStyle.copyWith(
+                                                    fontSize: 50,
+                                                  ),
+                                                  textAlign: TextAlign.center,
+                                                )
                                               )
                                             )
                                           )
-                                        )
-                                      ]
+                                        ]
+                                      ),
                                     ),
                                   ),
                                 )

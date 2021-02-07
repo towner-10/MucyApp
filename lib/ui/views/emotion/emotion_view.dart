@@ -16,10 +16,11 @@ class EmotionView extends StatelessWidget {
         extendBody: true,
         body: Container(
           decoration: BoxDecoration(
-            image: DecorationImage(
+            color: Backgrounds.defaultBackgroundColor
+            /*image: DecorationImage(
               image: Backgrounds.defaultBackground,
               fit: BoxFit.fitHeight
-            )
+            )*/
           ),
           height: model.getSizingService().screenHeight,
           child: Padding(

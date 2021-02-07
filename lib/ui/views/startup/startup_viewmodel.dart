@@ -15,10 +15,6 @@ class StartupViewModel extends BaseViewModel {
   }
 
   void navigateToOnboarding() {
-    _navigationService.config(
-      defaultTransition: NavigationTransition.RightToLeft
-    );
-
     if (_storage.name != '') {
       _navigationService.replaceWith(Routes.homeView);
     }

@@ -141,23 +141,6 @@ class BreatheView extends StatelessWidget {
                   ]
                 ),
               ),
-              Container(
-                height: model.getSizingService().screenHeight,
-                child: Column(
-                  children: [
-                    Container(
-                      margin: EdgeInsets.only(top: model.getSizingService().blockSizeVertical * 10),
-                      width: model.getSizingService().blockSizeHorizontal * 60,
-                      child: Text(
-                        'Are you feeling better?',
-                        style: kHeadingTextStyle.copyWith(
-                          fontSize: 35
-                        ),
-                      ),
-                    )
-                  ],
-                )
-              ),
             ],
           ),
         ),

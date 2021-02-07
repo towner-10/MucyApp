@@ -22,12 +22,20 @@ class OnboardingViewModel extends BaseViewModel {
   String _name = "";
   String get currentName => _name;
 
-  AssetImage get currentBackgroundImage {
+  BoxDecoration get currentBackgroundDecoration {
     switch(_currentPage) {
       case 0:
-        return Backgrounds.blueMucyBackground;
+        return BoxDecoration(
+          color: Backgrounds.defaultBackgroundColor,
+          image: DecorationImage(
+            image: Backgrounds.blueMucyBackground,
+            fit: BoxFit.fitHeight
+          )
+        );
       default:
-        return Backgrounds.defaultBackground;
+        return BoxDecoration(
+          color: Backgrounds.defaultBackgroundColor
+        );
     }
   }
 
@@ -52,6 +60,6 @@ class OnboardingViewModel extends BaseViewModel {
 
   Future navigateToHome() async {
     _storage.name = _name;
-    await _navigationService.navigateTo(Routes.homeView);
+    await _navigationService.replaceWith(Routes.homeView);
   }
 }
