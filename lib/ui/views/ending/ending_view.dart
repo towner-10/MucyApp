@@ -1,6 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:mucy/models/emotion_data.dart';
+import 'package:mucy/ui/elements/button_nav_button.dart';
 import 'package:mucy/utilities/backgrounds.dart';
 import 'package:mucy/utilities/styles.dart';
 import 'package:stacked/stacked.dart';
@@ -229,25 +230,10 @@ class EndingView extends StatelessWidget {
                       ],
                     )
                   ),
-                  bottomNavigationBar: Container(
-                    margin: EdgeInsets.all(5).copyWith(
-                      bottom: 15 + model.getSizingService().bottomPadding
-                    ),
-                    height: 58.0,
-                    child: InkWell(
-                      borderRadius: BorderRadius.circular(20.0),
-                      onTap: () => model.navigateToHome(),
-                      child: Center(
-                        child: Text(
-                          'Continue',
-                          style: kBottomButtonTextStyle
-                        )
-                      )
-                    ),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20.0),
-                      color: EmotionData.emotionData[model.emotionIndex].color,
-                    ),
+                  bottomNavigationBar: BottomNavButton(
+                    text: 'Continue',
+                    color: EmotionData.emotionData[model.emotionIndex].color,
+                    callback: () => model.navigateToHome(),
                   ),
                 )
               ],
