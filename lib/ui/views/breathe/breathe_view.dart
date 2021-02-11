@@ -1,4 +1,5 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:mucy/utilities/backgrounds.dart';
 import 'package:mucy/utilities/styles.dart';
@@ -57,8 +58,9 @@ class BreatheView extends StatelessWidget {
                         width: model.getSizingService().blockSizeHorizontal * 50,
                         child: Align(
                           alignment: Alignment.topCenter,
-                          child: Text(
+                          child: AutoSizeText(
                             'Now, let\'s do some breathing.',
+                            maxLines: 2,
                             style: kMontserratRegular.copyWith(
                               fontSize: 20,
                               color: Colors.white

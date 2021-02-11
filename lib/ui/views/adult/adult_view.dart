@@ -59,26 +59,29 @@ class AdultView extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                            "Adult, please enter a reward",
-                            style: kHeadingTextStyle.copyWith(
-                                fontSize: 21
+                          FittedBox(
+                            fit: BoxFit.scaleDown,
+                            child: Text(
+                              "Adult, please enter a reward",
+                              style: kHeadingTextStyle.copyWith(
+                                fontSize: 22
+                              ),
                             ),
                           ),
                           IconButton(
-                              icon: Icon(
-                                Icons.info,
-                                size: model.getSizingService().blockSizeHorizontal * 7.5,
-                                color: Colors.black,
-                              ),
-                              onPressed: () => model.openHelperSheet()
+                            icon: Icon(
+                              Icons.info,
+                              size: model.getSizingService().blockSizeHorizontal * 7.5,
+                              color: Colors.black,
+                            ),
+                            onPressed: () => model.openHelperSheet()
                           )
                         ],
                       ),
                       Container(
                         padding: EdgeInsets.only(
-                            top: model.getSizingService().blockSizeVertical * 2.5,
-                            bottom: model.getSizingService().blockSizeVertical * 4
+                          top: model.getSizingService().blockSizeVertical * 1.5,
+                          bottom: model.getSizingService().blockSizeVertical * 5
                         ),
                         width: model.getSizingService().blockSizeHorizontal * 90,
                         child: Text(

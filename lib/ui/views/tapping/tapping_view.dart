@@ -1,4 +1,5 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:mucy/ui/elements/button_nav_button.dart';
 import 'package:mucy/utilities/backgrounds.dart';
@@ -65,11 +66,12 @@ class TappingView extends StatelessWidget {
                         SizedBox(
                           height: model.getSizingService().blockSizeVertical * 10,
                           child: BounceInRight(
-                            child: Text(
+                            child: AutoSizeText(
                               '"' + model.data[index].quote + '"',
                               style: kMontserratRegular.copyWith(
                                 fontSize: 25
                               ),
+                              maxLines: 2,
                               textAlign: TextAlign.center,
                             ),
                           ),
