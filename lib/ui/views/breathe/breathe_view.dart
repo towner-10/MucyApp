@@ -1,4 +1,5 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:mucy/utilities/backgrounds.dart';
 import 'package:mucy/utilities/styles.dart';
@@ -57,9 +58,10 @@ class BreatheView extends StatelessWidget {
                         width: model.getSizingService().blockSizeHorizontal * 50,
                         child: Align(
                           alignment: Alignment.topCenter,
-                          child: Text(
+                          child: AutoSizeText(
                             'Now, let\'s do some breathing.',
-                            style: kParagraphTextStyle.copyWith(
+                            maxLines: 2,
+                            style: kMontserratRegular.copyWith(
                               fontSize: 20,
                               color: Colors.white
                             ),
@@ -88,10 +90,10 @@ class BreatheView extends StatelessWidget {
                         child: CustomAnimation<double>(
                           control: _countControl,
                           tween: Tween(
-                            begin: 5.0,
+                            begin: 3.0,
                             end: 0.0
                           ),
-                          duration: const Duration(seconds: 6, milliseconds: 400),
+                          duration: const Duration(seconds: 3, milliseconds: 600),
                           builder: (context, child, value) {
                             int _displayValue = (value).round();
 
@@ -130,7 +132,7 @@ class BreatheView extends StatelessWidget {
                         },
                         child: Text(
                           model.currentBreatheText,
-                          style: kParagraphTextStyle.copyWith(
+                          style: kMontserratRegular.copyWith(
                             fontSize: 30,
                             color: Colors.white
                           ),

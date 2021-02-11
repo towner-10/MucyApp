@@ -1,4 +1,5 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
@@ -78,9 +79,9 @@ class HelperDialogService {
                       Container(
                         padding: EdgeInsets.only(top: _sizingService.blockSizeVertical * 2),
                         width: _sizingService.blockSizeHorizontal * 80,
-                        child: Text(
+                        child: AutoSizeText(
                           content,
-                          style: kParagraphTextStyle.copyWith(
+                          style: kMontserratRegular.copyWith(
                             fontSize: contentFontSize,
                             color: Colors.black,
                             height: 1.5

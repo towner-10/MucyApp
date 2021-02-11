@@ -1,7 +1,8 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:mucy/models/emotion_data.dart';
+import 'package:mucy/ui/elements/button_nav_button.dart';
 import 'package:mucy/utilities/backgrounds.dart';
 import 'package:mucy/utilities/styles.dart';
 import 'package:stacked/stacked.dart';
@@ -16,10 +17,6 @@ class EndingView extends StatelessWidget {
       builder: (context, model, child) => Container(
         decoration: BoxDecoration(
           color: Backgrounds.defaultBackgroundColor
-          /*image: DecorationImage(
-            image: Backgrounds.defaultBackground,
-            fit: BoxFit.fitHeight
-          )*/
         ),
         child: SingleChildScrollView(
           child: Container(
@@ -41,8 +38,9 @@ class EndingView extends StatelessWidget {
                           child: Container(
                             margin: EdgeInsets.only(top: model.getSizingService().blockSizeVertical * 20),
                             width: model.getSizingService().blockSizeHorizontal * 60,
-                            child: Text(
+                            child: AutoSizeText(
                               'Are you feeling better?',
+                              maxLines: 2,
                               style: kHeadingTextStyle.copyWith(
                                 fontSize: 35
                               ),
@@ -70,7 +68,7 @@ class EndingView extends StatelessWidget {
                     margin: EdgeInsets.all(5).copyWith(
                       bottom: 15 + model.getSizingService().bottomPadding
                     ),
-                    height: 58.0,
+                    height: model.getSizingService().blockSizeVertical * 7.4,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
@@ -82,7 +80,7 @@ class EndingView extends StatelessWidget {
                             },
                             borderRadius: BorderRadius.circular(20.0),
                             child: Container(
-                              height: 58.0,
+                              height: model.getSizingService().blockSizeVertical * 7.4,
                               width: model.getSizingService().blockSizeHorizontal * 45,
                               child: Icon(
                                 Icons.close,
@@ -107,7 +105,7 @@ class EndingView extends StatelessWidget {
                             },
                             borderRadius: BorderRadius.circular(20.0),
                             child: Container(
-                              height: 58.0,
+                              height: model.getSizingService().blockSizeVertical * 7.4,
                               width: model.getSizingService().blockSizeHorizontal * 45,
                               child: Icon(
                                 Icons.check,
@@ -144,15 +142,13 @@ class EndingView extends StatelessWidget {
                         Bounce(
                           child: Container(
                             width: model.getSizingService().blockSizeHorizontal * 80,
-                            child: FittedBox(
-                              child: Text(
-                                'You are so amazing!',
-                                style: kHeadingTextStyle.copyWith(
-                                  fontSize: 35
-                                ),
-                                textAlign: TextAlign.center,
+                            child: AutoSizeText(
+                              'You are so amazing!',
+                              maxLines: 1,
+                              style: kHeadingTextStyle.copyWith(
+                                fontSize: 35
                               ),
-                              fit: BoxFit.scaleDown,
+                              textAlign: TextAlign.center,
                             ),
                           ),
                         ),
@@ -161,7 +157,7 @@ class EndingView extends StatelessWidget {
                           width: model.getSizingService().blockSizeHorizontal * 50,
                           child: Text(
                             model.feelingBetter ? 'Have a marvelous Mucy Day.' : 'Feel better and have a marvelous Mucy Day.',
-                            style: kParagraphTextStyle.copyWith(
+                            style: kMontserratRegular.copyWith(
                               fontSize: 20
                             ),
                             textAlign: TextAlign.center,
@@ -200,10 +196,9 @@ class EndingView extends StatelessWidget {
                                     top: model.getSizingService().blockSizeVertical * 1.5,
                                     child: Text(
                                       'Reward',
-                                      style: GoogleFonts.montserrat(
+                                      style: kMontserratSemiBold.copyWith(
                                         fontSize: 18,
-                                        color: const Color(0xff000000),
-                                        fontWeight: FontWeight.w600,
+                                        color: Colors.black
                                       ),
                                       textAlign: TextAlign.center,
                                     )
@@ -235,25 +230,10 @@ class EndingView extends StatelessWidget {
                       ],
                     )
                   ),
-                  bottomNavigationBar: Container(
-                    margin: EdgeInsets.all(5).copyWith(
-                      bottom: 15 + model.getSizingService().bottomPadding
-                    ),
-                    height: 58.0,
-                    child: InkWell(
-                      borderRadius: BorderRadius.circular(20.0),
-                      onTap: () => model.navigateToHome(),
-                      child: Center(
-                        child: Text(
-                          'Continue',
-                          style: kBottomButtonTextStyle
-                        )
-                      )
-                    ),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20.0),
-                      color: EmotionData.emotionData[model.emotionIndex].color,
-                    ),
+                  bottomNavigationBar: BottomNavButton(
+                    text: 'Continue',
+                    color: EmotionData.emotionData[model.emotionIndex].color,
+                    callback: () => model.navigateToHome(),
                   ),
                 )
               ],

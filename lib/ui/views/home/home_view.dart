@@ -49,7 +49,7 @@ class HomeView extends StatelessWidget {
                           alignment: Alignment.center,
                           child: Text(
                             'Welcome to a new session, ${model.name}!',
-                            style: kParagraphTextStyle.copyWith(
+                            style: kMontserratRegular.copyWith(
                               fontSize: 20,
                               color: Colors.white
                             ),

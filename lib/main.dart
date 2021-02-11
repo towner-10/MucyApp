@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mucy/app/locator.dart';
@@ -18,6 +19,13 @@ class MyApp extends StatelessWidget {
         DeviceOrientation.portraitUp,
         DeviceOrientation.portraitDown,
       ]);
+    
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
+
+    LicenseRegistry.addLicense(() async* {
+      final license = await rootBundle.loadString('assets/fonts/montserrat/OFL.txt');
+      yield LicenseEntryWithLineBreaks(['google_fonts'], license);
+    });
 
     return MaterialApp(
       builder: ExtendedNavigator.builder<MucyRouter>(

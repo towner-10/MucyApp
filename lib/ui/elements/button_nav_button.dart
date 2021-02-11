@@ -19,7 +19,7 @@ class BottomNavButton extends StatelessWidget {
       margin: EdgeInsets.all(15).copyWith(
         bottom: 15 + locator<SizingService>().bottomPadding
       ),
-      height: 58.0,
+      height: locator<SizingService>().blockSizeVertical * 7.4,
       child: InkWell(
         borderRadius: BorderRadius.circular(20.0),
         onTap: () => callback(),

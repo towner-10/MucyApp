@@ -17,10 +17,6 @@ class EmotionView extends StatelessWidget {
         body: Container(
           decoration: BoxDecoration(
             color: Backgrounds.defaultBackgroundColor
-            /*image: DecorationImage(
-              image: Backgrounds.defaultBackground,
-              fit: BoxFit.fitHeight
-            )*/
           ),
           height: model.getSizingService().screenHeight,
           child: Padding(
@@ -40,7 +36,7 @@ class EmotionView extends StatelessWidget {
                       ),
                       Text(
                         "How are you feeling?",
-                        style: kParagraphTextStyle.copyWith(
+                        style: kMontserratRegular.copyWith(
                           fontSize: 20
                         ),
                       ),

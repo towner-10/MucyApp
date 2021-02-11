@@ -1,4 +1,5 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:mucy/ui/elements/button_nav_button.dart';
 import 'package:mucy/utilities/backgrounds.dart';
@@ -19,10 +20,6 @@ class TappingView extends StatelessWidget {
           height: model.getSizingService().screenHeight,
           decoration: BoxDecoration(
             color: Backgrounds.defaultBackgroundColor
-            /*image: DecorationImage(
-              image: Backgrounds.defaultBackground,
-              fit: BoxFit.fitHeight
-            )*/
           ),
           child: PageView.builder(
             itemCount: model.data.length,
@@ -69,11 +66,12 @@ class TappingView extends StatelessWidget {
                         SizedBox(
                           height: model.getSizingService().blockSizeVertical * 10,
                           child: BounceInRight(
-                            child: Text(
+                            child: AutoSizeText(
                               '"' + model.data[index].quote + '"',
-                              style: kParagraphTextStyle.copyWith(
+                              style: kMontserratRegular.copyWith(
                                 fontSize: 25
                               ),
+                              maxLines: 2,
                               textAlign: TextAlign.center,
                             ),
                           ),
