@@ -41,6 +41,6 @@ class AdultViewModel extends BaseViewModel {
   }
 
   void openHelperSheet() {
-    _helperDialogService.showDialog("What is this?", "Rewards are a cool way for children to be engaged in maintaining their mental wellbeing. Feel free to assign any reward for your child such as monitored screen time, a special treat, and more.");
+    _helperDialogService.showDialog("What is this?", "Rewards are a cool way for children to be engaged in maintaining their mental wellbeing. Feel free to assign any reward for your child such as monitored screen time, a special treat, and more.", contentMaxLines: 5);
   }
 }

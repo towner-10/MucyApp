@@ -15,7 +15,6 @@ class StartupViewModel extends BaseViewModel {
   }
 
   void navigateToOnboarding() {
-    print(_sizingService.screenHeight);
     if (_storage.name != '') {
       _navigationService.replaceWith(Routes.homeView);
     }

@@ -43,8 +43,9 @@ class BreatheView extends StatelessWidget {
                         width: model.getSizingService().blockSizeHorizontal * 90,
                         child: Align(
                           alignment: Alignment.bottomCenter,
-                          child: Text(
+                          child: AutoSizeText(
                             'Hooray! You\'re done.',
+                            maxLines: 1,
                             style: kHeadingTextStyle.copyWith(
                               fontSize: 35,
                               color: Colors.white,
@@ -130,13 +131,16 @@ class BreatheView extends StatelessWidget {
                         transitionBuilder: (child, animation) {
                           return ScaleTransition(child: child, scale: animation);
                         },
-                        child: Text(
-                          model.currentBreatheText,
-                          style: kMontserratRegular.copyWith(
-                            fontSize: 30,
-                            color: Colors.white
-                          ),
-                          key: ValueKey<String>(model.currentBreatheText),
+                        child: FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Text(
+                            model.currentBreatheText,
+                            style: kMontserratRegular.copyWith(
+                              fontSize: 30,
+                              color: Colors.white
+                            ),
+                            key: ValueKey<String>(model.currentBreatheText),
+                          )
                         )
                       )
                     ),

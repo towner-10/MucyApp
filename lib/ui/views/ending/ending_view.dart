@@ -36,26 +36,26 @@ class EndingView extends StatelessWidget {
                       children: [
                         BounceInDown(
                           child: Container(
-                            margin: EdgeInsets.only(top: model.getSizingService().blockSizeVertical * 20),
                             width: model.getSizingService().blockSizeHorizontal * 60,
-                            child: AutoSizeText(
-                              'Are you feeling better?',
-                              maxLines: 2,
-                              style: kHeadingTextStyle.copyWith(
-                                fontSize: 35
+                            height: model.getSizingService().blockSizeVertical * 40,
+                            child: Center(
+                              child: AutoSizeText(
+                                'Are you feeling better?',
+                                maxLines: 2,
+                                style: kHeadingTextStyle.copyWith(
+                                  fontSize: 35
+                                ),
+                                textAlign: TextAlign.center,
                               ),
-                              textAlign: TextAlign.center,
                             ),
                           ),
                         ),
                         Bounce(
                           child: Container(
-                            margin: EdgeInsets.symmetric(vertical: model.getSizingService().blockSizeVertical * 6),
-                            child: Align(
-                              alignment: Alignment.center,
+                            child: Center(
                               child: Image(
                                 image: EmotionData.emotionData[model.emotionIndex].image,
-                                width: model.getSizingService().blockSizeHorizontal * 90,
+                                width: model.getSizingService().blockSizeHorizontal * 80,
                                 fit: BoxFit.fitWidth,
                               ),
                             ),
@@ -68,7 +68,7 @@ class EndingView extends StatelessWidget {
                     margin: EdgeInsets.all(5).copyWith(
                       bottom: 15 + model.getSizingService().bottomPadding
                     ),
-                    height: model.getSizingService().blockSizeVertical * 7.4,
+                    height: model.getSizingService().blockSizeVertical * 9,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
@@ -80,7 +80,7 @@ class EndingView extends StatelessWidget {
                             },
                             borderRadius: BorderRadius.circular(20.0),
                             child: Container(
-                              height: model.getSizingService().blockSizeVertical * 7.4,
+                              height: model.getSizingService().blockSizeVertical * 9,
                               width: model.getSizingService().blockSizeHorizontal * 45,
                               child: Icon(
                                 Icons.close,
@@ -105,7 +105,7 @@ class EndingView extends StatelessWidget {
                             },
                             borderRadius: BorderRadius.circular(20.0),
                             child: Container(
-                              height: model.getSizingService().blockSizeVertical * 7.4,
+                              height: model.getSizingService().blockSizeVertical * 9,
                               width: model.getSizingService().blockSizeHorizontal * 45,
                               child: Icon(
                                 Icons.check,
@@ -134,13 +134,15 @@ class EndingView extends StatelessWidget {
                             alignment: Alignment.center,
                             child: Image(
                               image: EmotionData.emotionData[model.emotionIndex].image,
+                              height: model.getSizingService().blockSizeVertical * 35,
                               width: model.getSizingService().blockSizeHorizontal * 80,
-                              fit: BoxFit.fitWidth,
+                              fit: BoxFit.contain,
                             ),
                           ),
                         ),
                         Bounce(
                           child: Container(
+                            height: model.getSizingService().blockSizeVertical * 5,
                             width: model.getSizingService().blockSizeHorizontal * 80,
                             child: AutoSizeText(
                               'You are so amazing!',
@@ -153,64 +155,66 @@ class EndingView extends StatelessWidget {
                           ),
                         ),
                         Container(
-                          margin: EdgeInsets.only(top: model.getSizingService().blockSizeVertical, bottom: model.getSizingService().blockSizeVertical * 5),
-                          width: model.getSizingService().blockSizeHorizontal * 50,
-                          child: Text(
-                            model.feelingBetter ? 'Have a marvelous Mucy Day.' : 'Feel better and have a marvelous Mucy Day.',
-                            style: kMontserratRegular.copyWith(
-                              fontSize: 20
+                          height: model.getSizingService().blockSizeVertical * 5,
+                          width: model.getSizingService().blockSizeHorizontal * 70,
+                          child: Center(
+                            child: AutoSizeText(
+                              model.feelingBetter ? 'Have a marvelous Mucy Day.' : 'Feel better and have a marvelous Mucy Day.',
+                              maxLines: 1,
+                              style: kMontserratRegular.copyWith(
+                                fontSize: 20
+                              ),
+                              textAlign: TextAlign.center,
                             ),
-                            textAlign: TextAlign.center,
                           ),
                         ),
-                        Padding(
-                          padding: EdgeInsets.only(bottom: 10),
-                          child: FadeInUp(
-                            from: 50,
-                            child: Container(
-                              width: model.getSizingService().blockSizeHorizontal * 70,
-                              height: model.getSizingService().blockSizeVertical * 18,
-                              child: Stack(
-                                fit: StackFit.loose,
-                                alignment: AlignmentDirectional.center,
-                                children: [
-                                  Container(
-                                    width: model.getSizingService().blockSizeHorizontal * 70,
-                                    height: model.getSizingService().blockSizeVertical * 18,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(27.0),
-                                      border: Border.all(width: 2.0, color: const Color(0xff000000)),
-                                    ),
-                                  ),
-                                  Positioned(
-                                    top: model.getSizingService().blockSizeVertical * 4,
-                                    child: Container(
-                                      width: 233,
-                                      child: Divider(
-                                        thickness: 2,
-                                        color: Colors.black,
+                        Expanded(
+                          child: Center(
+                            child: FadeInUp(
+                              from: 50,
+                              child: Container(
+                                width: model.getSizingService().blockSizeHorizontal * 70,
+                                height: model.getSizingService().blockSizeVertical * 17,
+                                child: Stack(
+                                  fit: StackFit.loose,
+                                  alignment: AlignmentDirectional.center,
+                                  children: [
+                                    Container(
+                                      width: model.getSizingService().blockSizeHorizontal * 70,
+                                      height: model.getSizingService().blockSizeVertical * 17,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(27.0),
+                                        border: Border.all(width: 2.0, color: Colors.black),
                                       ),
                                     ),
-                                  ),
-                                  Positioned(
-                                    top: model.getSizingService().blockSizeVertical * 1.5,
-                                    child: Text(
-                                      'Reward',
-                                      style: kMontserratSemiBold.copyWith(
-                                        fontSize: 18,
-                                        color: Colors.black
+                                    Positioned(
+                                      top: model.getSizingService().blockSizeVertical * 4,
+                                      child: Container(
+                                        width: model.getSizingService().blockSizeHorizontal * 70,
+                                        child: Divider(
+                                          thickness: 2,
+                                          color: Colors.black,
+                                        ),
                                       ),
-                                      textAlign: TextAlign.center,
-                                    )
-                                  ),
-                                  Positioned(
-                                    bottom: model.getSizingService().blockSizeVertical * 3,
-                                    child: Container(
-                                      width: model.getSizingService().blockSizeHorizontal * 60,
-                                      child: FittedBox(
-                                        fit: BoxFit.scaleDown,
-                                        child: Align(
-                                          alignment: Alignment.center,
+                                    ),
+                                    Positioned(
+                                      top: model.getSizingService().blockSizeVertical * 1,
+                                      child: Text(
+                                        'Reward',
+                                        style: kMontserratSemiBold.copyWith(
+                                          fontSize: 18,
+                                          color: Colors.black
+                                        ),
+                                        textAlign: TextAlign.center,
+                                      )
+                                    ),
+                                    Positioned(
+                                      bottom: model.getSizingService().blockSizeVertical,
+                                      child: Container(
+                                        width: model.getSizingService().blockSizeHorizontal * 65,
+                                        height: model.getSizingService().blockSizeVertical * 10,
+                                        child: FittedBox(
+                                          fit: BoxFit.scaleDown,
                                           child: Text(
                                             model.reward == '' ? 'A Mucy Day' : model.reward,
                                             style: kHeadingTextStyle.copyWith(
@@ -221,10 +225,10 @@ class EndingView extends StatelessWidget {
                                         )
                                       )
                                     )
-                                  )
-                                ]
+                                  ]
+                                ),
                               ),
-                            ),
+                            )
                           )
                         )
                       ],

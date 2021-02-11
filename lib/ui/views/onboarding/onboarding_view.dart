@@ -1,4 +1,5 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:mucy/ui/elements/button_nav_button.dart';
@@ -112,14 +113,18 @@ class OnboardingView extends StatelessWidget {
                                 FadeInRight(
                                   child: Container(
                                     height: model.getSizingService().blockSizeVertical * 5,
-                                    padding: EdgeInsets.only(left: model.getSizingService().blockSizeHorizontal * 7),
+                                    margin: EdgeInsets.only(
+                                      left: model.getSizingService().blockSizeHorizontal * 7,
+                                      right: model.getSizingService().blockSizeHorizontal * 2
+                                    ),
                                     child: Align(
                                       alignment: Alignment.centerLeft,
-                                      child: Text(
+                                      child: AutoSizeText(
                                         'Before we get started, what is your name?',
                                         style: kMontserratRegular.copyWith(
                                           fontSize: 15,
                                         ),
+                                        maxLines: 1,
                                         textAlign: TextAlign.left,
                                       )
                                     ),
@@ -200,10 +205,10 @@ class OnboardingView extends StatelessWidget {
                                 BounceInRight(
                                   child: Container(
                                     height: model.getSizingService().blockSizeVertical * 5,
-                                    child: Text(
+                                    child: AutoSizeText(
                                       'Nice to meet you!',
                                       style: kMontserratRegular.copyWith(
-                                        fontSize: 15,
+                                        fontSize: 20,
                                       ),
                                       textAlign: TextAlign.center,
                                     )
@@ -214,14 +219,14 @@ class OnboardingView extends StatelessWidget {
                                   child: FadeInRight(
                                     child: Container(
                                       width: model.getSizingService().blockSizeHorizontal * 70,
-                                      height: model.getSizingService().blockSizeVertical * 18,
+                                      height: model.getSizingService().blockSizeVertical * 17,
                                       child: Stack(
                                         fit: StackFit.loose,
                                         alignment: AlignmentDirectional.center,
                                         children: [
                                           Container(
                                             width: model.getSizingService().blockSizeHorizontal * 70,
-                                            height: model.getSizingService().blockSizeVertical * 18,
+                                            height: model.getSizingService().blockSizeVertical * 17,
                                             decoration: BoxDecoration(
                                               borderRadius: BorderRadius.circular(27.0),
                                               border: Border.all(width: 2.0, color: const Color(0xff000000)),
@@ -230,7 +235,7 @@ class OnboardingView extends StatelessWidget {
                                           Positioned(
                                             top: model.getSizingService().blockSizeVertical * 4,
                                             child: Container(
-                                              width: 233,
+                                              width: model.getSizingService().blockSizeHorizontal * 70,
                                               child: Divider(
                                                 thickness: 2,
                                                 color: Colors.black,
@@ -238,7 +243,7 @@ class OnboardingView extends StatelessWidget {
                                             ),
                                           ),
                                           Positioned(
-                                            top: model.getSizingService().blockSizeVertical * 1.5,
+                                            top: model.getSizingService().blockSizeVertical * 1,
                                             child: Text(
                                               'Hi, my name is',
                                               style: kMontserratSemiBold.copyWith(
@@ -249,9 +254,10 @@ class OnboardingView extends StatelessWidget {
                                             )
                                           ),
                                           Positioned(
-                                            bottom: model.getSizingService().blockSizeVertical * 3,
+                                            bottom: model.getSizingService().blockSizeVertical,
                                             child: Container(
                                               width: model.getSizingService().blockSizeHorizontal * 65,
+                                              height: model.getSizingService().blockSizeVertical * 10,
                                               child: FittedBox(
                                                 fit: BoxFit.scaleDown,
                                                 child: Text(

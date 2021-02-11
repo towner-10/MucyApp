@@ -26,7 +26,7 @@ class HelperDialogService {
     );
   }
 
-  Future<void> showDialog(String title, String content, {double titleFontSize = 25, double contentFontSize = 14}) {
+  Future<void> showDialog(String title, String content, {double titleFontSize = 25, int contentMaxLines = 3}) {
     return showModalBottomSheet(
       context: Get.context,
       builder: (BuildContext context) {
@@ -37,17 +37,17 @@ class HelperDialogService {
             borderRadius: BorderRadius.only(topLeft: Radius.circular(34.0), topRight: Radius.circular(34.0)),
             color: Colors.white,
           ),
-          child: Padding(
-            padding: EdgeInsets.only(top: _sizingService.blockSizeVertical * 4),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Expanded(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Bounce(
-                        from: 15,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(top: _sizingService.blockSizeVertical * 3),
+                      child: Bounce(
+                        from: 10,
                         duration: const Duration(milliseconds: 800),
                         delay: const Duration(milliseconds: 100),
                         child: Icon(
@@ -56,50 +56,54 @@ class HelperDialogService {
                           color: Colors.black,
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                          top: _sizingService.blockSizeVertical * 2,
-                          bottom: _sizingService.blockSizeVertical * 2
-                        ),
-                        child: Text(
-                          title,
-                          style: kHeadingTextStyle.copyWith(
-                            fontSize: titleFontSize,
-                            color: Colors.black
-                          ),
+                    ),
+                    Container(
+                      height: _sizingService.blockSizeVertical * 10,
+                      padding: EdgeInsets.only(
+                        top: _sizingService.blockSizeVertical * 2,
+                        bottom: _sizingService.blockSizeVertical * 2
+                      ),
+                      child: Text(
+                        title,
+                        style: kHeadingTextStyle.copyWith(
+                          fontSize: titleFontSize,
+                          color: Colors.black
                         ),
                       ),
-                      Container(
-                        width: _sizingService.blockSizeHorizontal * 85,
-                        child: Divider(
-                          color: const Color(0xFFEFF0F3),
-                          thickness: 2,
-                        ),
+                    ),
+                    Container(
+                      width: _sizingService.blockSizeHorizontal * 85,
+                      child: Divider(
+                        color: const Color(0xFFEFF0F3),
+                        height: 10,
+                        thickness: 2,
                       ),
-                      Container(
-                        padding: EdgeInsets.only(top: _sizingService.blockSizeVertical * 2),
-                        width: _sizingService.blockSizeHorizontal * 80,
-                        child: AutoSizeText(
-                          content,
-                          style: kMontserratRegular.copyWith(
-                            fontSize: contentFontSize,
-                            color: Colors.black,
-                            height: 1.5
-                          ),
-                          textAlign: TextAlign.center,
+                    ),
+                    Container(
+                      padding: EdgeInsets.only(top: _sizingService.blockSizeVertical * 2),
+                      width: _sizingService.blockSizeHorizontal * 80,
+                      height: _sizingService.blockSizeVertical * 15,
+                      child: AutoSizeText(
+                        content,
+                        maxLines: contentMaxLines,
+                        minFontSize: 3,
+                        style: kMontserratRegular.copyWith(
+                          fontSize: 20,
+                          color: Colors.black
                         ),
+                        textAlign: TextAlign.center,
                       ),
-                    ],
-                  )
-                ),
-                BottomNavButton(
-                  text: 'Close',
-                  color: const Color(0xFFEFF0F3),
-                  callback: () => Navigator.pop(context),
-                  textColor: Colors.black,
+                    ),
+                  ],
                 )
-              ],
-            ),
+              ),
+              BottomNavButton(
+                text: 'Close',
+                color: const Color(0xFFEFF0F3),
+                callback: () => Navigator.pop(context),
+                textColor: Colors.black,
+              )
+            ],
           ),
         );
       },

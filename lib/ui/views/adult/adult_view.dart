@@ -59,22 +59,35 @@ class AdultView extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          FittedBox(
-                            fit: BoxFit.scaleDown,
-                            child: Text(
-                              "Adult, please enter a reward",
-                              style: kHeadingTextStyle.copyWith(
-                                fontSize: 22
+                          Container(
+                            width: model.getSizingService().blockSizeHorizontal * 70,
+                            child: FittedBox(
+                              fit: BoxFit.scaleDown,
+                              child: Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  "Adult, please enter a reward",
+                                  textAlign: TextAlign.left,
+                                  style: kHeadingTextStyle.copyWith(
+                                    fontSize: 22
+                                  ),
+                                ),
                               ),
                             ),
                           ),
-                          IconButton(
-                            icon: Icon(
-                              Icons.info,
-                              size: model.getSizingService().blockSizeHorizontal * 7.5,
-                              color: Colors.black,
+                          Container(
+                            width: model.getSizingService().blockSizeHorizontal * 15,
+                            child: FittedBox(
+                              fit: BoxFit.scaleDown,
+                              child: IconButton(
+                                icon: Icon(
+                                  Icons.info,
+                                  size: model.getSizingService().blockSizeHorizontal * 7.5,
+                                  color: Colors.black,
+                                ),
+                                onPressed: () => model.openHelperSheet()
+                              ),
                             ),
-                            onPressed: () => model.openHelperSheet()
                           )
                         ],
                       ),

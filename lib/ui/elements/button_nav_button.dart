@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:mucy/app/locator.dart';
@@ -19,17 +20,21 @@ class BottomNavButton extends StatelessWidget {
       margin: EdgeInsets.all(15).copyWith(
         bottom: 15 + locator<SizingService>().bottomPadding
       ),
-      height: locator<SizingService>().blockSizeVertical * 7.4,
+      height: locator<SizingService>().blockSizeVertical * 9,
       child: InkWell(
         borderRadius: BorderRadius.circular(20.0),
         onTap: () => callback(),
         child: Center(
-          child: Text(
-            text,
-            style: kBottomButtonTextStyle.copyWith(
-              color: textColor
-            )
-          )
+          child: FittedBox(
+            fit: BoxFit.scaleDown,
+            child: AutoSizeText(
+              text,
+              style: kBottomButtonTextStyle.copyWith(
+                color: textColor,
+                fontSize: 20
+              ),
+            ),
+          ),
         )
       ),
       decoration: BoxDecoration(
