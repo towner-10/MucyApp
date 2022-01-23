@@ -47,7 +47,15 @@ Don't forget to give the project a star! Thanks again!
 - Any IDE with Flutter SDK installed (ie. IntelliJ, Android Studio, VSCode etc)
 - A little knowledge of Dart and Flutter
 
+<br/>
+
+## Available to download on the App Store and Play Store
+
+[![App Store](https://img.shields.io/badge/App_Store-0D96F6?style=for-the-badge&logo=app-store&logoColor=white)](https://apps.apple.com/us/app/mucy/id1547537066)
+[![Play Store](https://img.shields.io/badge/Google_Play-414141?style=for-the-badge&logo=google-play&logoColor=white)](https://play.google.com/store/apps/details?id=org.mucy.mucy)
+
+<br/>
+
 ## Built with ❤️ using ![Flutter](https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&color=7393CC&logo=Flutter&logoColor=white)
-#### Available to download on the App Store and Play Store
 
 <p align="right">(<a href="#top">back to top</a>)</p>
