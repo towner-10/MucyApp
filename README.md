@@ -9,7 +9,7 @@
   <p align="center">
     Meet Mucy, your child’s new companion to help lead them through a journey to a better state of mental wellness!
     <br />
-    <a href="https://github.com/towner-10/MucyApp"><strong>Download »</strong></a>
+    <a href="#download"><strong>Download »</strong></a>
     <br />
     <br />
     <a href="https://github.com/towner-10/MucyApp/issues">Report Bug</a>
@@ -49,6 +49,8 @@ Don't forget to give the project a star! Thanks again!
 
 <br/>
 
+<div id="download"></div>
+
 ## Available to download on the App Store and Play Store
 
 [![App Store](https://img.shields.io/badge/App_Store-0D96F6?style=for-the-badge&logo=app-store&logoColor=white)](https://apps.apple.com/us/app/mucy/id1547537066)
@@ -56,6 +58,6 @@ Don't forget to give the project a star! Thanks again!
 
 <br/>
 
-## Built with ❤️ using ![Flutter](https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&color=7393CC&logo=Flutter&logoColor=white)
+### Built with ❤️ using ![Flutter](https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&color=7393CC&logo=Flutter&logoColor=white)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
