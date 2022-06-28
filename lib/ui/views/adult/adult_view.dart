@@ -5,6 +5,7 @@ import 'package:mucy/utilities/backgrounds.dart';
 import 'package:mucy/utilities/styles.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_hooks/stacked_hooks.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'adult_viewmodel.dart';
 
 class AdultView extends StatelessWidget {
@@ -35,7 +36,7 @@ class AdultView extends StatelessWidget {
                           child: Row(
                             children: [
                               Text(
-                                "Skip",
+                                'skip'.tr(),
                                 style: kMontserratSemiBold.copyWith(
                                   fontSize: 15,
                                   color: Colors.black
@@ -66,7 +67,7 @@ class AdultView extends StatelessWidget {
                               child: Align(
                                 alignment: Alignment.centerLeft,
                                 child: Text(
-                                  "Adult, please enter a reward",
+                                  'adult_reward_prompt'.tr(),
                                   textAlign: TextAlign.left,
                                   style: kHeadingTextStyle.copyWith(
                                     fontSize: 22
@@ -98,7 +99,7 @@ class AdultView extends StatelessWidget {
                         ),
                         width: model.getSizingService().blockSizeHorizontal * 90,
                         child: Text(
-                          "Before we get started, we need to know the all important reward.",
+                          'adult_reward_sub'.tr(),
                           style: kMontserratRegular.copyWith(
                             fontSize: 15
                           ),
@@ -110,7 +111,7 @@ class AdultView extends StatelessWidget {
                           Align(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              'What\'s the reward?',
+                              'whats_the_reward'.tr(),
                               style: kMontserratSemiBold.copyWith(
                                 fontSize: 10,
                                 color: Colors.black
@@ -137,7 +138,7 @@ class AdultView extends StatelessWidget {
             )
           ),
           bottomNavigationBar: BottomNavButton(
-            text: 'Continue',
+            text: 'continue'.tr(),
             color: const Color(0xFF6776C1),
             callback: () {
               if (model.formKey.currentState!.validate()) {
@@ -168,7 +169,7 @@ class _HookTextField extends HookViewModelWidget<AdultViewModel> {
       ),
       cursorColor: Colors.black,
       decoration: InputDecoration(
-        hintText: "Enter the reward...",
+        hintText: 'enter_reward'.tr(),
         contentPadding: EdgeInsets.only(left: 5),
         errorStyle: kMontserratSemiBold.copyWith(
           fontSize: 10,

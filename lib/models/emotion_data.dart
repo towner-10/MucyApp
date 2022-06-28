@@ -1,12 +1,13 @@
 import 'package:flutter/rendering.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class EmotionData {
 
   static final List<EmotionData> emotionData = [
-    new EmotionData(new AssetImage('assets/images/pinkMucyHead.png'), const Color(0xFFCC708A), "Happy", 0),
-    new EmotionData(new AssetImage('assets/images/lightBlueMucyHead.png'), const Color(0xFF6776C1), "So-So", 1),
-    new EmotionData(new AssetImage('assets/images/blueMucyHead.png'), const Color(0xFF282E4E), "Sad", 2),
-    new EmotionData(new AssetImage('assets/images/darkMucyHead.png'), const Color(0xFF191E32), "Upset", 3)
+    new EmotionData(new AssetImage('assets/images/pinkMucyHead.png'), const Color(0xFFCC708A), 'happy'.tr(), 0),
+    new EmotionData(new AssetImage('assets/images/lightBlueMucyHead.png'), const Color(0xFF6776C1), 'soso'.tr(), 1),
+    new EmotionData(new AssetImage('assets/images/blueMucyHead.png'), const Color(0xFF282E4E), 'sad'.tr(), 2),
+    new EmotionData(new AssetImage('assets/images/darkMucyHead.png'), const Color(0xFF191E32), 'upset'.tr(), 3)
   ];
 
   final ImageProvider _image;

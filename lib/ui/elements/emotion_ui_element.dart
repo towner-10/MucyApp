@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:mucy/app/locator.dart';
 import 'package:mucy/models/emotion_data.dart';
@@ -29,15 +30,19 @@ class EmotionUIView extends ViewModelBuilderWidget<EmotionViewModel> {
             height: 50.0,
             child: InkWell(
               onTap: () => model.saveEmotion(_viewData.index),
-              child: Center(
-                child: Text(
-                  _viewData.name,
-                  style: kBottomButtonTextStyle
-                )
-              )
+              child: Padding(
+                padding: EdgeInsets.all(4),
+                child: Center(
+                  child: AutoSizeText(
+                    _viewData.name,
+                    style: kBottomButtonTextStyle,
+                    maxLines: 1,
+                  )
+                ),
+              ) 
             ),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20.0),
+              borderRadius: BorderRadius.circular(10.0),
               color: _viewData.color,
             ),
           ),

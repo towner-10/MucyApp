@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:mucy/app/locator.dart';
 import 'package:mucy/app/router.gr.dart';
 import 'package:mucy/services/sizing_service.dart';

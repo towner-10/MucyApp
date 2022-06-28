@@ -4,6 +4,7 @@ import 'package:mucy/models/emotion_data.dart';
 import 'package:mucy/ui/elements/emotion_ui_element.dart';
 import 'package:mucy/utilities/backgrounds.dart';
 import 'package:mucy/utilities/styles.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:stacked/stacked.dart';
 import 'emotion_viewmodel.dart';
 
@@ -29,13 +30,13 @@ class EmotionView extends StatelessWidget {
                   child: Column(
                     children: [
                       Text(
-                        "Mucy Emotion",
+                        'mucy_emotion'.tr(),
                         style: kHeadingTextStyle.copyWith(
                           fontSize: 35
                         ),
                       ),
                       Text(
-                        "How are you feeling?",
+                        'how_are_you_feeling'.tr(),
                         style: kMontserratRegular.copyWith(
                           fontSize: 20
                         ),

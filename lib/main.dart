@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -5,11 +6,19 @@ import 'package:auto_route/auto_route.dart';
 import 'package:get/get.dart';
 import 'package:mucy/app/locator.dart';
 import 'package:mucy/app/router.gr.dart';
-import 'package:mucy/utilities/translations.dart';
 
-void main() {
+void main() async {
   setupLocator();
-  runApp(MucyApp());
+
+  WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
+
+  runApp(EasyLocalization(
+      supportedLocales: [Locale('en'), Locale('fr')],
+      path: 'assets/translations',
+      fallbackLocale: Locale('en'),
+      child: MucyApp()
+    ));
 }
 
 class MucyApp extends StatelessWidget {
@@ -34,9 +43,9 @@ class MucyApp extends StatelessWidget {
     return GetMaterialApp.router(
       routerDelegate: AutoRouterDelegate(_autoRouter),
       routeInformationParser: _autoRouter.defaultRouteParser(),
-      translations: MucyTranslations(),
-      locale: Get.deviceLocale,
-      fallbackLocale: Locale('en', 'CA'),
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      locale: context.locale,
       builder: (context, extendedNav) => Theme(
         data: ThemeData.light().copyWith(
           bottomSheetTheme: BottomSheetThemeData(backgroundColor: Colors.transparent)

@@ -5,6 +5,7 @@ import 'package:mucy/models/tapping_page_data.dart';
 import 'package:mucy/services/helper_dialog_service.dart';
 import 'package:mucy/services/sizing_service.dart';
 import 'package:mucy/services/storage_service.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:stacked/stacked.dart';
 
 class TappingViewModel extends BaseViewModel {
@@ -49,7 +50,7 @@ class TappingViewModel extends BaseViewModel {
   }
 
   void showHelpDialog() {
-    _dialogService.showDialog("What to do?", "1. Repeat the phrase\n\n2. Gently tap the highlighted area on yourself");
+    _dialogService.showDialog('what_to_do'.tr(), 'what_to_do_dialog'.tr());
   }
 
   SizingService getSizingService() {

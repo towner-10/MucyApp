@@ -5,6 +5,7 @@ import 'package:mucy/app/router.gr.dart';
 import 'package:mucy/services/helper_dialog_service.dart';
 import 'package:mucy/services/sizing_service.dart';
 import 'package:mucy/ui/elements/button_nav_button.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:stacked/stacked.dart';
 
 enum BreatheState {
@@ -34,11 +35,11 @@ class BreatheViewModel extends BaseViewModel {
   String get currentBreatheText {
     switch(_breatheState) {
       case BreatheState.In:
-        return "Breathe In...";
+        return 'breathe_in'.tr();
       case BreatheState.Hold:
-        return "Hold...";
+        return 'hold_breath'.tr();
       case BreatheState.Out:
-        return "Breathe Out...";
+        return 'breathe_out'.tr();
     }
   }
 
@@ -77,7 +78,7 @@ class BreatheViewModel extends BaseViewModel {
     _dialogService.showCustomBottomSheet(
       child: FadeIn(
         child: BottomNavButton(
-          text: 'Continue',
+          text: 'continue'.tr(),
           color: const Color(0xFF282E4E),
           callback: () => navigateToEnd(),
         )

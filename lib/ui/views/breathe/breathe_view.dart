@@ -5,6 +5,7 @@ import 'package:mucy/utilities/backgrounds.dart';
 import 'package:mucy/utilities/styles.dart';
 import 'package:simple_animations/simple_animations.dart';
 import 'package:stacked/stacked.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'breathe_viewmodel.dart';
 
 class BreatheView extends StatelessWidget {
@@ -44,7 +45,7 @@ class BreatheView extends StatelessWidget {
                         child: Align(
                           alignment: Alignment.bottomCenter,
                           child: AutoSizeText(
-                            'Hooray! You\'re done.',
+                            'you_are_done'.tr(),
                             maxLines: 1,
                             style: kHeadingTextStyle.copyWith(
                               fontSize: 35,
@@ -60,7 +61,7 @@ class BreatheView extends StatelessWidget {
                         child: Align(
                           alignment: Alignment.topCenter,
                           child: AutoSizeText(
-                            'Now, let\'s do some breathing.',
+                            'start_breathing'.tr(),
                             maxLines: 2,
                             style: kMontserratRegular.copyWith(
                               fontSize: 20,

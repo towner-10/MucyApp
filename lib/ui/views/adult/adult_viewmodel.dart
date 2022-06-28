@@ -4,6 +4,7 @@ import 'package:mucy/app/router.gr.dart';
 import 'package:mucy/services/helper_dialog_service.dart';
 import 'package:mucy/services/sizing_service.dart';
 import 'package:mucy/services/storage_service.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:stacked/stacked.dart';
 
 class AdultViewModel extends BaseViewModel {
@@ -15,7 +16,7 @@ class AdultViewModel extends BaseViewModel {
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-  String _reward = "";
+  String _reward = '';
 
   SizingService getSizingService() {
     return _sizingService;
@@ -31,7 +32,7 @@ class AdultViewModel extends BaseViewModel {
   }
 
   String? validateRewardInput(String? input) {
-    if (input == "" || input == null) return 'Please enter a reward!';
+    if (input == '' || input == null) return 'please_enter_reward'.tr();
     else return null;
   }
 
@@ -40,6 +41,6 @@ class AdultViewModel extends BaseViewModel {
   }
 
   void openHelperSheet() {
-    _helperDialogService.showDialog("What is this?", "Rewards are a cool way for children to be engaged in maintaining their mental wellbeing. Feel free to assign any reward for your child such as monitored screen time, a special treat, and more.", contentMaxLines: 5);
+    _helperDialogService.showDialog('what_is_this'.tr(), 'reward_dialog'.tr(), contentMaxLines: 5);
   }
 }

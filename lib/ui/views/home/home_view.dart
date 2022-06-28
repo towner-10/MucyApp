@@ -3,6 +3,7 @@ import 'package:mucy/ui/elements/button_nav_button.dart';
 import 'package:mucy/utilities/backgrounds.dart';
 import 'package:mucy/utilities/styles.dart';
 import 'package:stacked/stacked.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'home_viewmodel.dart';
 
 class HomeView extends StatelessWidget {
@@ -33,7 +34,7 @@ class HomeView extends StatelessWidget {
                           width: model.getSizingService().blockSizeHorizontal * 90,
                           padding: EdgeInsets.symmetric(vertical: 20),
                           child: Text(
-                            'New Session',
+                            'new_session'.tr(),
                             style: kHeadingTextStyle.copyWith(
                               fontSize: 40,
                               color: Colors.white,
@@ -47,7 +48,7 @@ class HomeView extends StatelessWidget {
                         child: Align(
                           alignment: Alignment.center,
                           child: Text(
-                            'Welcome to a new session, ${model.name}!',
+                            'session_greeting'.tr() + ' ${model.name}!',
                             style: kMontserratRegular.copyWith(
                               fontSize: 20,
                               color: Colors.white
@@ -64,7 +65,7 @@ class HomeView extends StatelessWidget {
           )
         ),
         bottomNavigationBar: BottomNavButton(
-          text: 'Let\'s get started',
+          text: 'lets_get_started'.tr(),
           color: const Color(0xff282e4e),
           callback: () => model.navigateToAdultReward(),
         )

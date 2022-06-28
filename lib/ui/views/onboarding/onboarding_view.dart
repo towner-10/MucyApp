@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:mucy/ui/elements/button_nav_button.dart';
 import 'package:mucy/utilities/styles.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_hooks/stacked_hooks.dart';
 import 'onboarding_viewmodel.dart';
@@ -43,7 +44,7 @@ class OnboardingView extends StatelessWidget {
                                     width: model.getSizingService().blockSizeHorizontal * 90,
                                     padding: EdgeInsets.symmetric(vertical: 20),
                                     child: Text(
-                                      'Welcome to Mucy',
+                                      'app_greeting'.tr(),
                                       style: kHeadingTextStyle.copyWith(
                                         fontSize: 40,
                                         color: Colors.white,
@@ -56,7 +57,7 @@ class OnboardingView extends StatelessWidget {
                                   child: Align(
                                     alignment: Alignment.center,
                                     child: Text(
-                                      'I am Mucy the Meerkat.',
+                                      'mucy_name_greeting'.tr(),
                                       style: kMontserratRegular.copyWith(
                                         fontSize: 20,
                                         color: Colors.white,
@@ -69,7 +70,7 @@ class OnboardingView extends StatelessWidget {
                             ),
                           ),
                           BottomNavButton(
-                            text: 'Continue',
+                            text: 'continue'.tr(),
                             color: const Color(0xff282e4e),
                             callback: () => _pageController.animateToPage(model.currentPage + 1, duration: Duration(milliseconds: 300), curve: Curves.easeInToLinear),
                           )
@@ -103,7 +104,7 @@ class OnboardingView extends StatelessWidget {
                                     child: Align(
                                       alignment: Alignment.centerLeft,
                                       child: Text(
-                                        'Getting to know you',
+                                        'getting_to_know_you'.tr(),
                                         style: kHeadingTextStyle,
                                         textAlign: TextAlign.left,
                                       )
@@ -120,7 +121,7 @@ class OnboardingView extends StatelessWidget {
                                     child: Align(
                                       alignment: Alignment.centerLeft,
                                       child: AutoSizeText(
-                                        'Before we get started, what is your name?',
+                                        'whats_your_name_2'.tr(),
                                         style: kMontserratRegular.copyWith(
                                           fontSize: 15,
                                         ),
@@ -141,7 +142,7 @@ class OnboardingView extends StatelessWidget {
                                           child: Align(
                                             alignment: Alignment.centerLeft,
                                             child: Text(
-                                              'What\'s your name?',
+                                              'whats_your_name'.tr(),
                                               style: kMontserratSemiBold.copyWith(
                                                 fontSize: 10,
                                                 color: Colors.black
@@ -171,7 +172,7 @@ class OnboardingView extends StatelessWidget {
                             ),
                           ),
                           BottomNavButton(
-                            text: 'Get Started',
+                            text: 'get_started'.tr(),
                             color: const Color(0xff6776c1),
                             callback: () {
                               if (model.formKey.currentState!.validate()) {
@@ -206,7 +207,7 @@ class OnboardingView extends StatelessWidget {
                                   child: Container(
                                     height: model.getSizingService().blockSizeVertical * 5,
                                     child: AutoSizeText(
-                                      'Nice to meet you!',
+                                      'nice_to_meet_you'.tr(),
                                       style: kMontserratRegular.copyWith(
                                         fontSize: 20,
                                       ),
@@ -245,7 +246,7 @@ class OnboardingView extends StatelessWidget {
                                           Positioned(
                                             top: model.getSizingService().blockSizeVertical * 1,
                                             child: Text(
-                                              'Hi, my name is',
+                                              'hi_my_name_is'.tr(),
                                               style: kMontserratSemiBold.copyWith(
                                                 fontSize: 18,
                                                 color: Colors.black
@@ -279,7 +280,7 @@ class OnboardingView extends StatelessWidget {
                             ),
                           ),
                           BottomNavButton(
-                            text: 'Let\'s go',
+                            text: 'lets_go'.tr(),
                             color: const Color(0xffcc708a),
                             callback: () => model.navigateToHome(),
                           )
@@ -312,7 +313,7 @@ class _HookTextField extends HookViewModelWidget<OnboardingViewModel> {
       ),
       cursorColor: Colors.black,
       decoration: InputDecoration(
-        hintText: "Enter your name...",
+        hintText: "enter_name".tr(),
         contentPadding: EdgeInsets.only(left: 5),
         errorStyle: kMontserratSemiBold.copyWith(
           fontSize: 10,

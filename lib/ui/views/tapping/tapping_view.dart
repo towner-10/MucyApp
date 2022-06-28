@@ -5,6 +5,7 @@ import 'package:mucy/ui/elements/button_nav_button.dart';
 import 'package:mucy/utilities/backgrounds.dart';
 import 'package:mucy/utilities/styles.dart';
 import 'package:stacked/stacked.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'tapping_viewmodel.dart';
 
 class TappingView extends StatelessWidget {
@@ -89,7 +90,7 @@ class TappingView extends StatelessWidget {
                     if (snap.hasData) {
                       return FadeIn(
                         child: BottomNavButton(
-                          text: 'Continue', 
+                          text: 'continue'.tr(), 
                           color: model.data[index].color,
                           callback: () {
                             if (model.currentPage >= 8) model.navigateToBreathe();

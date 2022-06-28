@@ -3,13 +3,15 @@ description: Creates strong mental habits in youth to handle the challenges and 
 
 publish_to: 'none'
 
-version: 0.2.0+1
+version: 0.2.0+2
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
   flutter:
+    sdk: flutter
+  flutter_localizations:
     sdk: flutter
   flutter_hooks: ^0.18.5+1
   auto_route: ^4.0.1
@@ -24,6 +26,8 @@ dependencies:
   simple_animations: ^4.1.0
   animate_do: ^2.1.0
   auto_animated: ^3.0.1
+  get: 4.6.1
+  easy_localization: ^3.0.1
   flutter_native_splash: ^2.2.3+1
 
 dev_dependencies:
@@ -48,6 +52,7 @@ flutter:
 
   assets:
    - assets/images/
+   - assets/translations/
 
   fonts:
    - family: Montserrat

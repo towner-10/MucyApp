@@ -1,4 +1,5 @@
 import 'package:flutter/rendering.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 enum TappingPoint {
   KarateChop,
@@ -25,25 +26,25 @@ class TappingPageData {
   String get title {
     switch(_point) {
       case TappingPoint.KarateChop:
-        return "Karate Chop";
+        return 'karate_chop'.tr();
       case TappingPoint.Eyebrow:
-        return "Eyebrow";
+        return 'eyebrow'.tr();
       case TappingPoint.SideOfEye:
-        return "Side of eye";
+        return 'side_of_eye'.tr();
       case TappingPoint.UnderEye:
-        return "Under eye";
+        return 'under_eye'.tr();
       case TappingPoint.UnderNose:
-        return "Under nose";
+        return 'under_nose'.tr();
       case TappingPoint.Chin:
-        return "Chin";
+        return 'chin'.tr();
       case TappingPoint.Neck:
-        return "Neck";
+        return 'neck'.tr();
       case TappingPoint.Underarm:
-        return "Underarm";
+        return 'underarm'.tr();
       case TappingPoint.TopOfHead:
-        return "Top of head";
+        return 'top_of_head'.tr();
       default:
-        return "Karate Chop";
+        return 'karate_chop'.tr();
     }
   }
 
@@ -56,18 +57,16 @@ class TappingPageData {
       case TappingPoint.UnderNose:
         switch(_emotionIndex) {
           case 0:
-            return "I will stay happy for myself and others.";
+            return 'quote_0'.tr();
           case 1:
-            return "It’s okay for me to not know how I feel.";
+            return 'quote_1'.tr();
           case 2:
-            return "Even though I feel sad, I love myself.";
+            return 'quote_2'.tr();
           case 3:
-            return "I can get through this.";
+            return 'quote_3'.tr();
           default:
-            return "";
+            return '';
         }
-        // ignore: dead_code
-        break;
 
       case TappingPoint.Chin:
       case TappingPoint.Neck:
@@ -75,21 +74,19 @@ class TappingPageData {
       case TappingPoint.TopOfHead:
         switch(_emotionIndex) {
           case 0:
-            return "I will stay positive!";
+            return 'quote_4'.tr();
           case 1:
-            return "My emotions will change.";
+            return 'quote_5'.tr();
           case 2:
-            return "Even though I feel sad, I can feel better.";
+            return 'quote_6'.tr();
           case 3:
-            return "Even though I’m upset, I love myself.";
+            return 'quote_7'.tr();
           default:
-            return "";
+            return '';
         }
-        // ignore: dead_code
-        break;
 
       default:
-        return "";
+        return '';
     }
   }
 

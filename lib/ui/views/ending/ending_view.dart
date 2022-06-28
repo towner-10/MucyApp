@@ -6,6 +6,7 @@ import 'package:mucy/ui/elements/button_nav_button.dart';
 import 'package:mucy/utilities/backgrounds.dart';
 import 'package:mucy/utilities/styles.dart';
 import 'package:stacked/stacked.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'ending_viewmodel.dart';
 
 class EndingView extends StatelessWidget {
@@ -40,7 +41,7 @@ class EndingView extends StatelessWidget {
                             height: model.getSizingService().blockSizeVertical * 40,
                             child: Center(
                               child: AutoSizeText(
-                                'Are you feeling better?',
+                                'feeling_better'.tr(),
                                 maxLines: 2,
                                 style: kHeadingTextStyle.copyWith(
                                   fontSize: 35
@@ -145,7 +146,7 @@ class EndingView extends StatelessWidget {
                             height: model.getSizingService().blockSizeVertical * 5,
                             width: model.getSizingService().blockSizeHorizontal * 80,
                             child: AutoSizeText(
-                              'You are so amazing!',
+                              'you_are_amazing'.tr(),
                               maxLines: 1,
                               style: kHeadingTextStyle.copyWith(
                                 fontSize: 35
@@ -159,7 +160,7 @@ class EndingView extends StatelessWidget {
                           width: model.getSizingService().blockSizeHorizontal * 70,
                           child: Center(
                             child: AutoSizeText(
-                              model.feelingBetter ? 'Have a marvelous Mucy Day.' : 'Feel better and have a marvelous Mucy Day.',
+                              model.feelingBetter ? 'have_a_mucy_day_better'.tr() : 'have_a_mucy_day'.tr(),
                               maxLines: 1,
                               style: kMontserratRegular.copyWith(
                                 fontSize: 20
@@ -200,7 +201,7 @@ class EndingView extends StatelessWidget {
                                     Positioned(
                                       top: model.getSizingService().blockSizeVertical * 1,
                                       child: Text(
-                                        'Reward',
+                                        'reward'.tr(),
                                         style: kMontserratSemiBold.copyWith(
                                           fontSize: 18,
                                           color: Colors.black
@@ -216,7 +217,7 @@ class EndingView extends StatelessWidget {
                                         child: FittedBox(
                                           fit: BoxFit.scaleDown,
                                           child: Text(
-                                            model.reward == '' ? 'A Mucy Day' : model.reward,
+                                            model.reward == '' ? 'a_mucy_day'.tr() : model.reward,
                                             style: kHeadingTextStyle.copyWith(
                                               fontSize: 50,
                                             ),
@@ -235,7 +236,7 @@ class EndingView extends StatelessWidget {
                     )
                   ),
                   bottomNavigationBar: BottomNavButton(
-                    text: 'Continue',
+                    text: 'continue'.tr(),
                     color: EmotionData.emotionData[model.emotionIndex].color,
                     callback: () => model.navigateToHome(),
                   ),
