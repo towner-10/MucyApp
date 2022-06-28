@@ -1,5 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:auto_route/auto_route_annotations.dart';
 import 'package:mucy/ui/views/adult/adult_view.dart';
 import 'package:mucy/ui/views/breathe/breathe_view.dart';
 import 'package:mucy/ui/views/emotion/emotion_view.dart';
@@ -21,4 +20,5 @@ import 'package:mucy/ui/views/tapping/tapping_view.dart';
     CustomRoute(page: EndingView, transitionsBuilder: TransitionsBuilders.slideLeftWithFade)
   ]
 )
+
 class $MucyRouter{}

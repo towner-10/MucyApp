@@ -1,18 +1,17 @@
-import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:injectable/injectable.dart';
 
 @lazySingleton
 class StorageService {
 
-  Box _settings;
-  Box _tapping;
+  late final Box _settings;
+  late final Box _tapping;
 
   StorageService() {
-    initalize();
+    initialize();
   }
 
-  Future initalize() async {
+  Future initialize() async {
     await Hive.initFlutter();
     
     _settings = await Hive.openBox("settings");

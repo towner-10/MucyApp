@@ -1,7 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:injectable/injectable.dart';
 import 'package:mucy/app/locator.dart';
@@ -16,7 +15,7 @@ class HelperDialogService {
 
   HelperDialogService();
 
-  void showCustomBottomSheet({Widget child}) {
+  void showCustomBottomSheet({required Widget child}) {
     Get.bottomSheet(
       child,
       barrierColor: Colors.transparent,
@@ -28,7 +27,7 @@ class HelperDialogService {
 
   Future<void> showDialog(String title, String content, {double titleFontSize = 25, int contentMaxLines = 3}) {
     return showModalBottomSheet(
-      context: Get.context,
+      context: Get.context!,
       builder: (BuildContext context) {
         return Container(
           width: _sizingService.screenWidth,

@@ -1,17 +1,21 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:get/get.dart';
 import 'package:mucy/app/locator.dart';
 import 'package:mucy/app/router.gr.dart';
-import 'package:stacked_services/stacked_services.dart';
+import 'package:mucy/utilities/translations.dart';
 
 void main() {
   setupLocator();
-  runApp(MyApp());
+  runApp(MucyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MucyApp extends StatelessWidget {
+
+  final MucyRouter _autoRouter = locator<MucyRouter>();
+
   @override
   Widget build(BuildContext context) {
 
@@ -27,18 +31,18 @@ class MyApp extends StatelessWidget {
       yield LicenseEntryWithLineBreaks(['google_fonts'], license);
     });
 
-    return MaterialApp(
-      builder: ExtendedNavigator.builder<MucyRouter>(
-        router: MucyRouter(),
-        initialRoute: Routes.startupView,
-        navigatorKey: locator<NavigationService>().navigatorKey,
-        builder: (context, extendedNav) => Theme(
-          data: ThemeData.light().copyWith(
-            bottomSheetTheme: BottomSheetThemeData(backgroundColor: Colors.transparent)
-          ),
-          child: extendedNav,
-        )
-      ),
+    return GetMaterialApp.router(
+      routerDelegate: AutoRouterDelegate(_autoRouter),
+      routeInformationParser: _autoRouter.defaultRouteParser(),
+      translations: MucyTranslations(),
+      locale: Get.deviceLocale,
+      fallbackLocale: Locale('en', 'CA'),
+      builder: (context, extendedNav) => Theme(
+        data: ThemeData.light().copyWith(
+          bottomSheetTheme: BottomSheetThemeData(backgroundColor: Colors.transparent)
+        ),
+        child: extendedNav!,
+      )
     );
   }
 }

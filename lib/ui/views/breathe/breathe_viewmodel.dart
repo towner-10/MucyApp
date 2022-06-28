@@ -5,9 +5,7 @@ import 'package:mucy/app/router.gr.dart';
 import 'package:mucy/services/helper_dialog_service.dart';
 import 'package:mucy/services/sizing_service.dart';
 import 'package:mucy/ui/elements/button_nav_button.dart';
-import 'package:mucy/utilities/styles.dart';
 import 'package:stacked/stacked.dart';
-import 'package:stacked_services/stacked_services.dart';
 
 enum BreatheState {
   In,
@@ -17,7 +15,7 @@ enum BreatheState {
 
 class BreatheViewModel extends BaseViewModel {
 
-  final NavigationService _navigationService = locator<NavigationService>();
+  final MucyRouter _autoRouter = locator<MucyRouter>();
   final SizingService _sizingService = locator<SizingService>();
   final HelperDialogService _dialogService = locator<HelperDialogService>();
 
@@ -93,7 +91,7 @@ class BreatheViewModel extends BaseViewModel {
   }
 
   void navigateToEnd() {
-    _navigationService.clearStackAndShow(Routes.endingView);
+    _autoRouter.replaceAll([EndingViewRoute()]);
   }
 
   SizingService getSizingService() {

@@ -13,7 +13,7 @@ class EmotionUIView extends ViewModelBuilderWidget<EmotionViewModel> {
   EmotionUIView(this._viewData);
 
   @override
-  Widget builder(BuildContext context, EmotionViewModel model, Widget child) {
+  Widget builder(BuildContext context, EmotionViewModel model, Widget? child) {
     return Container(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

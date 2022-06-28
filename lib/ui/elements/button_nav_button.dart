@@ -1,6 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:mucy/app/locator.dart';
 import 'package:mucy/services/sizing_service.dart';
 import 'package:mucy/utilities/styles.dart';
@@ -12,7 +11,7 @@ class BottomNavButton extends StatelessWidget {
   final Color textColor;
   final Function callback;
 
-  BottomNavButton({this.text, this.color, this.callback, this.textColor = Colors.white});
+  BottomNavButton({required this.text, required this.color, required this.callback, this.textColor = Colors.white});
 
   @override
   Widget build(BuildContext context) {

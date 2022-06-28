@@ -3,11 +3,10 @@ import 'package:mucy/app/router.gr.dart';
 import 'package:mucy/services/sizing_service.dart';
 import 'package:mucy/services/storage_service.dart';
 import 'package:stacked/stacked.dart';
-import 'package:stacked_services/stacked_services.dart';
 
 class EndingViewModel extends BaseViewModel {
 
-  final NavigationService _navigationService = locator<NavigationService>();
+  final MucyRouter _autoRouter = locator<MucyRouter>();
   final SizingService _sizingService = locator<SizingService>();
   final StorageService _storage = locator<StorageService>();
 
@@ -27,7 +26,7 @@ class EndingViewModel extends BaseViewModel {
   }
 
   void navigateToHome() {
-    _navigationService.replaceWith(Routes.homeView);
+    _autoRouter.replace(HomeViewRoute());
   }
 
   SizingService getSizingService() {

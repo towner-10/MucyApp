@@ -5,11 +5,10 @@ import 'package:mucy/services/helper_dialog_service.dart';
 import 'package:mucy/services/sizing_service.dart';
 import 'package:mucy/services/storage_service.dart';
 import 'package:stacked/stacked.dart';
-import 'package:stacked_services/stacked_services.dart';
 
 class AdultViewModel extends BaseViewModel {
 
-  final NavigationService _navigationService = locator<NavigationService>();
+  final MucyRouter _autoRouter = locator<MucyRouter>();
   final StorageService _storageService = locator<StorageService>();
   final SizingService _sizingService = locator<SizingService>();
   final HelperDialogService _helperDialogService = locator<HelperDialogService>();
@@ -26,18 +25,18 @@ class AdultViewModel extends BaseViewModel {
     _storageService.reward = _reward;
   }
 
-  void updateReward(String reward) {
-    _reward = reward;
+  void updateReward(String? reward) {
+    _reward = reward!;
     notifyListeners();
   }
 
-  String validateRewardInput(String input) {
+  String? validateRewardInput(String? input) {
     if (input == "" || input == null) return 'Please enter a reward!';
     else return null;
   }
 
   void navigateToMucyEmotion() {
-    _navigationService.navigateTo(Routes.emotionView);
+    _autoRouter.navigate(EmotionViewRoute());
   }
 
   void openHelperSheet() {

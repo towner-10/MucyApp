@@ -6,7 +6,6 @@ import 'package:mucy/services/helper_dialog_service.dart';
 import 'package:mucy/services/sizing_service.dart';
 import 'package:mucy/services/storage_service.dart';
 import 'package:stacked/stacked.dart';
-import 'package:stacked_services/stacked_services.dart';
 
 class TappingViewModel extends BaseViewModel {
 
@@ -26,7 +25,7 @@ class TappingViewModel extends BaseViewModel {
 
   final SizingService _sizingService = locator<SizingService>();
   final HelperDialogService _dialogService = locator<HelperDialogService>();
-  final NavigationService _navigationService = locator<NavigationService>();
+  final MucyRouter _autoRouter = locator<MucyRouter>();
 
   bool runAnimation = true;
 
@@ -46,7 +45,7 @@ class TappingViewModel extends BaseViewModel {
   }
 
   void navigateToBreathe() {
-    _navigationService.clearStackAndShow(Routes.breatheView);
+    _autoRouter.replaceAll([BreatheViewRoute()]);
   }
 
   void showHelpDialog() {

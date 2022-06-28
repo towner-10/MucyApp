@@ -86,7 +86,7 @@ class TappingView extends StatelessWidget {
                       return true;
                     }),
                   builder: (context, snap) {
-                    if (snap.data) {
+                    if (snap.hasData) {
                       return FadeIn(
                         child: BottomNavButton(
                           text: 'Continue', 

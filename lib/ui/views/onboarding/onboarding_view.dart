@@ -174,8 +174,8 @@ class OnboardingView extends StatelessWidget {
                             text: 'Get Started',
                             color: const Color(0xff6776c1),
                             callback: () {
-                              if (model.formKey.currentState.validate()) {
-                                model.formKey.currentState.save();
+                              if (model.formKey.currentState!.validate()) {
+                                model.formKey.currentState!.save();
                                 _pageController.animateToPage(model.currentPage + 1, duration: Duration(milliseconds: 300), curve: Curves.easeInToLinear);
                               }
                             },

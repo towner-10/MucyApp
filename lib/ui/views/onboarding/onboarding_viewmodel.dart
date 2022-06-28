@@ -5,11 +5,10 @@ import 'package:mucy/services/sizing_service.dart';
 import 'package:mucy/services/storage_service.dart';
 import 'package:mucy/utilities/backgrounds.dart';
 import 'package:stacked/stacked.dart';
-import 'package:stacked_services/stacked_services.dart';
 
 class OnboardingViewModel extends BaseViewModel {
 
-  final NavigationService _navigationService = locator<NavigationService>();
+  final MucyRouter _autoRouter = locator<MucyRouter>();
   final SizingService _sizingService = locator<SizingService>();
   final StorageService _storage = locator<StorageService>();
 
@@ -44,12 +43,12 @@ class OnboardingViewModel extends BaseViewModel {
     notifyListeners();
   }
 
-  void updateName(String name) {
-    _name = name;
+  void updateName(String? name) {
+    _name = name!;
     notifyListeners();
   }
 
-  String validateNameInput(String input) {
+  String? validateNameInput(String? input) {
     if (input == "" || input == null) return 'That\'s not a name silly!';
     else return null;
   }
@@ -60,6 +59,6 @@ class OnboardingViewModel extends BaseViewModel {
 
   Future navigateToHome() async {
     _storage.name = _name;
-    await _navigationService.replaceWith(Routes.homeView);
+    await _autoRouter.replace(HomeViewRoute());
   }
 }

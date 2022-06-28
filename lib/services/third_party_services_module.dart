@@ -1,10 +1,13 @@
 import 'package:injectable/injectable.dart';
+import 'package:get/get.dart';
+import 'package:mucy/app/router.gr.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 @module
 abstract class ThirdPartyServicesModule {
-  @lazySingleton
-  NavigationService get navigationService;
+
+  @singleton
+  MucyRouter get autoRouter => MucyRouter(Get.key);
 
   @lazySingleton
   DialogService get dialogService;

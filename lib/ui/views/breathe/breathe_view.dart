@@ -9,7 +9,7 @@ import 'breathe_viewmodel.dart';
 
 class BreatheView extends StatelessWidget {
   final PageController _pageController = PageController(initialPage: 0);
-  final CustomAnimationControl _countControl = CustomAnimationControl.MIRROR;
+  final CustomAnimationControl _countControl = CustomAnimationControl.mirror;
 
   @override
   Widget build(BuildContext context) {

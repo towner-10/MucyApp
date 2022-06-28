@@ -140,8 +140,8 @@ class AdultView extends StatelessWidget {
             text: 'Continue',
             color: const Color(0xFF6776C1),
             callback: () {
-              if (model.formKey.currentState.validate()) {
-                model.formKey.currentState.save();
+              if (model.formKey.currentState!.validate()) {
+                model.formKey.currentState!.save();
                 model.saveReward();
                 model.navigateToMucyEmotion();
               }

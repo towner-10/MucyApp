@@ -66,6 +66,7 @@ class TappingPageData {
           default:
             return "";
         }
+        // ignore: dead_code
         break;
 
       case TappingPoint.Chin:
@@ -84,6 +85,7 @@ class TappingPageData {
           default:
             return "";
         }
+        // ignore: dead_code
         break;
 
       default:
